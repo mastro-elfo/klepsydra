@@ -1,7 +1,7 @@
 {
   "name": "klepsydra",
   "homepage": "/klepsydra",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.3",
@@ -27,9 +27,9 @@
     "version": "node scripts/version.js",
     "prestart": "yarn run version",
     "start": "react-scripts start",
-    "prebuild": "yarn run version && yarn run test",
+    "prebuild": "yarn run version && yarn run test --all --watchAll=false",
     "build": "react-scripts build",
-    "test": "react-scripts test --all --watchAll=false",
+    "test": "react-scripts test",
     "eject": "echo \"react-scripts eject (echoed)\""
   },
   "eslintConfig": {
