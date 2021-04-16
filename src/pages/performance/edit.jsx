@@ -22,11 +22,12 @@ import {
   Page,
 } from "mastro-elfo-mui";
 
+import DurationField from "./DurationField";
+import PauseEditList from "./PauseEditList";
 import { update, destroy } from "../../controllers/performance";
-import { delta2hms, roundCost, timeDiff } from "../tracker/utils";
+import { roundCost, timeDiff } from "../tracker/utils";
 import { useSettings } from "../settings/context";
 import { closeTo } from "./utils";
-import DurationField from "./DurationField";
 
 import AddIcon from "@material-ui/icons/Add";
 import ClockIcon from "@material-ui/icons/AccessTime";
@@ -125,27 +126,6 @@ function Component() {
     const _payments = payments.slice();
     _payments[i].value = parseFloat(value);
     setPerformance((p) => ({ ...p, payments: _payments }));
-  };
-
-  const handleAddPause = () =>
-    setPerformance((p) => ({
-      ...p,
-      pauses: [
-        { start: new Date(), end: new Date(), length: 0, note: "" },
-        ...p.pauses,
-      ],
-    }));
-
-  const handleDeletePause = (i) => () => {
-    const _pauses = pauses.slice();
-    _pauses.splice(i, 1);
-    setPerformance((p) => ({ ...p, pauses: _pauses }));
-  };
-
-  const handleChangePause = (i, field, value) => {
-    const _pauses = pauses.slice();
-    _pauses[i][field] = value;
-    setPerformance((p) => ({ ...p, pauses: _pauses }));
   };
 
   return (
@@ -283,35 +263,10 @@ function Component() {
             </ListItem>
           </List>
 
-          <List subheader={<ListSubheader>Pause</ListSubheader>}>
-            <ListItem button onClick={handleAddPause}>
-              <ListItemIcon>
-                <AddIcon />
-              </ListItemIcon>
-              <ListItemText primary="Aggiungi" />
-            </ListItem>
-            {pauses.map(({ start, end, note, length }, i) => (
-              <ListItem key={i}>
-                <TextField
-                  fullWidth
-                  label={delta2hms(length)}
-                  value={note}
-                  onChange={({ target: { value } }) =>
-                    handleChangePause(i, "note", value)
-                  }
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment>
-                        <IconButton onClick={handleDeletePause(i)}>
-                          <DeleteIcon />
-                        </IconButton>
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </ListItem>
-            ))}
-          </List>
+          <PauseEditList
+            pauses={pauses}
+            onChange={handleChangeValue("pauses")}
+          />
 
           <List subheader={<ListSubheader>Pagamenti</ListSubheader>}>
             <ListItem button onClick={handleAddPayment}>

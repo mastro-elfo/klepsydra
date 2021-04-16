@@ -26,15 +26,11 @@ export default function Controllers() {
   };
 
   const handlePause = () => {
+    const start = new Date();
     setTracker({
       ...tracker,
       status: "paused",
-      pause: {
-        start: new Date(),
-        end: null,
-        length: 0,
-        note: "",
-      },
+      pause: { id: start, start, end: null, length: 0, note: "" },
     });
     enqueueSnackbar("Cronometro in pausa", { variant: "success" });
   };

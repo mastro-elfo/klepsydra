@@ -130,9 +130,12 @@ export default function ViewContent({ performance, print = false }) {
 
       {!!pauses && pauses.length !== 0 && (
         <List subheader={<ListSubheader>Pause</ListSubheader>}>
-          {pauses.map(({ note, length }, i) => (
+          {pauses.map(({ end, length, note, start }, i) => (
             <ListItem key={i}>
-              <ListItemText primary={note} secondary={delta2hms(length)} />
+              <ListItemText
+                primary={note}
+                secondary={delta2hms(timeDiff(start, end))}
+              />
             </ListItem>
           ))}
         </List>
