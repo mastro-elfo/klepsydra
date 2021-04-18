@@ -6,10 +6,8 @@ import {
   InputAdornment,
   List,
   ListItem,
-  ListItemIcon,
   ListItemSecondaryAction,
   ListItemText,
-  ListSubheader,
   TextField,
 } from "@material-ui/core";
 import { KeyboardDatePicker, KeyboardTimePicker } from "@material-ui/pickers";
@@ -24,16 +22,15 @@ import {
 
 import DurationField from "./DurationField";
 import PauseEditList from "./PauseEditList";
+import PaymentEditList from "./PaymentEditList";
 import { update, destroy } from "../../controllers/performance";
 import { roundCost, timeDiff } from "../tracker/utils";
 import { useSettings } from "../settings/context";
 import { closeTo } from "./utils";
 
-import AddIcon from "@material-ui/icons/Add";
 import ClockIcon from "@material-ui/icons/AccessTime";
 import FillIcon from "@material-ui/icons/AddCircle";
 import ReloadIcon from "@material-ui/icons/Autorenew";
-import DeleteIcon from "@material-ui/icons/Delete";
 import SaveIcon from "@material-ui/icons/Save";
 // import TimerIcon from "@material-ui/icons/Timer";
 
@@ -60,7 +57,10 @@ function Component() {
   const length = timeDiff(start, end, pauses);
   const cost = (length / 1000 / 3600) * price;
   const total = cost - discount;
-  const balance = payments.reduce((acc, { value }) => acc + value, 0);
+  const balance = payments.reduce(
+    (acc, { value }) => acc + parseFloat(value),
+    0
+  );
   const due = total - balance;
   const payed = closeTo(due, 0);
 
@@ -98,34 +98,23 @@ function Component() {
   };
 
   const handleChange = (field, cast = (v) => v) => ({ target: { value } }) =>
-    setPerformance((p) => ({ ...p, [field]: cast(value) }));
+    setPerformance({ ...performance, [field]: cast(value) });
 
   const handleChangeValue = (field, cast = (v) => v) => (value) =>
-    setPerformance((p) => ({ ...p, [field]: cast(value) }));
+    setPerformance({ ...performance, [field]: cast(value) });
 
   const handleChangeLength = (value) =>
-    setPerformance((p) => ({
-      ...p,
+    setPerformance({
+      ...performance,
       end: new Date(+new Date(end) + (value - length)),
-    }));
+    });
 
   const handleAddPayment = () => {
-    setPerformance((p) => ({
-      ...p,
-      payments: [{ date: new Date(), value: due }, ...p.payments],
-    }));
-  };
-
-  const handleDeletePayment = (i) => () => {
-    const _payments = payments.slice();
-    _payments.splice(i, 1);
-    setPerformance((p) => ({ ...p, payments: _payments }));
-  };
-
-  const handleChangePayment = (i) => ({ target: { value } }) => {
-    const _payments = payments.slice();
-    _payments[i].value = parseFloat(value);
-    setPerformance((p) => ({ ...p, payments: _payments }));
+    const date = new Date();
+    setPerformance({
+      ...performance,
+      payments: [{ id: date, date, value: due }, ...performance.payments],
+    });
   };
 
   return (
@@ -268,39 +257,11 @@ function Component() {
             onChange={handleChangeValue("pauses")}
           />
 
-          <List subheader={<ListSubheader>Pagamenti</ListSubheader>}>
-            <ListItem button onClick={handleAddPayment}>
-              <ListItemIcon>
-                <AddIcon />
-              </ListItemIcon>
-              <ListItemText primary="Aggiungi" />
-            </ListItem>
-            {payments.map(({ value, date }, i) => (
-              <ListItem key={i}>
-                <TextField
-                  fullWidth
-                  type="number"
-                  label={new Date(date).toLocaleString()}
-                  value={parseFloat(value).toFixed(2)}
-                  onChange={handleChangePayment(i)}
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        {settings.currency}
-                      </InputAdornment>
-                    ),
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <IconButton onClick={handleDeletePayment(i)}>
-                          <DeleteIcon />
-                        </IconButton>
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </ListItem>
-            ))}
-          </List>
+          <PaymentEditList
+            due={due}
+            payments={payments}
+            onChange={handleChangeValue("payments")}
+          />
 
           <List>
             <ListItem>
