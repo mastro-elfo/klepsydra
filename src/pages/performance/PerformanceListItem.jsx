@@ -14,6 +14,7 @@ import CheckIcon from "@material-ui/icons/CheckCircle";
 
 export default function PerformanceListItem({
   checked,
+  onClick,
   onToggle,
   performance,
 }) {
@@ -21,7 +22,6 @@ export default function PerformanceListItem({
     client: { name, surname },
     end,
     note,
-    onClick,
     pauses,
     payed,
     start,
