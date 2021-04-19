@@ -47,8 +47,6 @@ export default function StopDialogButton() {
       ...tracker,
       end: pause.start,
       status: "stopped",
-      // balance is probabily not used
-      balance: 0,
       payments: [],
       discount: settings.enableDiscountRound
         ? roundCost(total, settings.discountRound)
