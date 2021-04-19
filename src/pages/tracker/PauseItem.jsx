@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import { useTracker } from "./context";
 import { TextField } from "@material-ui/core";
 
-import { delta2hms } from "./utils";
+import { delta2hms, timeDiff } from "../tracker/utils";
 
 export default function PauseItem({ index }) {
   const [tracker, setTracker] = useTracker();
   const { pauses } = tracker || {};
 
   const [pause, setPause] = useState(pauses[index]);
+  const { end, note, start } = pause;
+  const length = timeDiff(start, end);
 
   useEffect(() => {
     const to = setTimeout(() => {
@@ -19,8 +21,6 @@ export default function PauseItem({ index }) {
     return () => clearTimeout(to);
     // eslint-disable-next-line
   }, [pause]);
-
-  const { note, length } = pause;
 
   const handleChange = ({ target: { value } }) =>
     setPause({ ...pause, note: value });

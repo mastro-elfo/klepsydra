@@ -27,7 +27,7 @@ export default function PaymentEditList({
 
   const handleAddPayment = () => {
     const date = new Date();
-    setPayments([{ id: date, date, value: due }, ...payments]);
+    setPayments([{ id: +date, date, value: due }, ...payments]);
   };
 
   const handleChange = (index) => (payment) => {
@@ -52,8 +52,8 @@ export default function PaymentEditList({
       </ListItem>
       {payments.map(({ id, ...payment }, i) => (
         <PaymentEdit
-          key={id || i}
-          payment={payment}
+          key={id}
+          payment={{ id, ...payment }}
           onChange={handleChange(i)}
           onDelete={handleDelete(i)}
         />

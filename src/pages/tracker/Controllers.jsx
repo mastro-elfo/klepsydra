@@ -5,7 +5,7 @@ import { IconButton } from "@material-ui/core";
 import StopDialogButton from "./StopDialogButton";
 
 import { useTracker } from "./context";
-import { timeDiff } from "./utils";
+// import { timeDiff } from "./utils";
 
 import StartIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
@@ -30,20 +30,18 @@ export default function Controllers() {
     setTracker({
       ...tracker,
       status: "paused",
-      pause: { id: start, start, end: null, length: 0, note: "" },
+      pause: { id: +start, start, end: null, note: "" },
     });
     enqueueSnackbar("Cronometro in pausa", { variant: "success" });
   };
 
   const handleResume = () => {
     const end = new Date();
+    console.log(pause);
     setTracker({
       ...tracker,
       status: "started",
-      pauses: [
-        { ...pause, end, length: timeDiff(tracker.pause.start, end) },
-        ...(pauses || []),
-      ],
+      pauses: [{ ...pause, end }, ...(pauses || [])],
       pause: null,
     });
     enqueueSnackbar("Cronometro avviato", { variant: "success" });

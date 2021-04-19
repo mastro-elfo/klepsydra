@@ -23,7 +23,7 @@ export default function PauseEditList({ pauses: _pauses, onChange }) {
 
   const handleAddPause = () => {
     const start = new Date();
-    setPauses([{ id: start, start, end: start, note: "" }, ...pauses]);
+    setPauses([{ id: +start, start, end: start, note: "" }, ...pauses]);
   };
 
   const handleChange = (index) => (pause) => {
@@ -48,8 +48,8 @@ export default function PauseEditList({ pauses: _pauses, onChange }) {
       </ListItem>
       {pauses.map(({ id, ...pause }, i) => (
         <PauseEdit
-          key={id || i}
-          pause={pause}
+          key={id}
+          pause={{ id, ...pause }}
           onChange={handleChange(i)}
           onDelete={handleDelete(i)}
         />
