@@ -26,10 +26,8 @@ export default function PaymentEditList({
     // eslint-disable-next-line
   }, [payments]);
 
-  const handleAddPayment = () => {
-    const date = new Date();
+  const handleAddPayment = () =>
     setPayments([create({ value: due }), ...payments]);
-  };
 
   const handleChange = (index) => (payment) => {
     const _payments = payments.slice();
