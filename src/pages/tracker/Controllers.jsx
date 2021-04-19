@@ -37,7 +37,6 @@ export default function Controllers() {
 
   const handleResume = () => {
     const end = new Date();
-    console.log(pause);
     setTracker({
       ...tracker,
       status: "started",
