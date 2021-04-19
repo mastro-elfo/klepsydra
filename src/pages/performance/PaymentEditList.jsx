@@ -27,7 +27,7 @@ export default function PaymentEditList({
 
   const handleAddPayment = () => {
     const date = new Date();
-    setPayments([{ id: +date, date, value: due }, ...payments]);
+    setPayments([create({ value: due }), ...payments]);
   };
 
   const handleChange = (index) => (payment) => {

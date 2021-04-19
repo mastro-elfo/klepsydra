@@ -6,7 +6,7 @@ import { delta2hms } from "./utils";
 
 export default function Pause() {
   const [tracker, setTracker] = useTracker();
-  const [pause, setPause] = useState({});
+  const [pause, setPause] = useState();
   const [length, setLength] = useState(0);
   const ref = useRef();
 
