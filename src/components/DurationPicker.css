@@ -1,13 +1,13 @@
 .rdp-picker {
-  background: transparent;
-  color: inherit;
+  background: transparent !important;
 }
+.rdp-picker,
 .rdp-masked-div {
-  color: inherit;
+  color: inherit !important;
 }
 .rdp-text-overlay {
-  visibility: hidden;
+  visibility: hidden !important;
 }
 .rdp-reticule {
-  border-color: #9c27b0;
+  border-color: #9c27b0 !important;
 }
