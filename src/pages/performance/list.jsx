@@ -24,6 +24,7 @@ function Component() {
   const [list, setList] = useState();
   const [selected, setSelected] = useState([]);
   const [didSearch, setDidSearch] = useState(false);
+  const [print, setPrint] = useState(false);
 
   useEffect(() => {
     if (!didSearch) {
@@ -38,6 +39,19 @@ function Component() {
     }
     // eslint-disable-next-line
   }, [didSearch]);
+
+  useEffect(() => {
+    const _selected = selected
+      .slice()
+      .filter(({ _id }) => list.find((item) => item._id === _id));
+    setSelected(_selected);
+  }, [list]);
+
+  useEffect(() => {
+    if (print) {
+      window.print();
+    }
+  }, [print]);
 
   if (!list) {
     return <Loader />;
@@ -80,6 +94,11 @@ function Component() {
     setDidSearch(false);
   };
 
+  const handlePrint = () => {
+    // window.print();
+    setPrint(true);
+  };
+
   return (
     <Page
       TopFabProps={{ color: "secondary", size: "small" }}
@@ -107,7 +126,7 @@ function Component() {
             <IconButton
               key="print"
               disabled={selected.length === 0}
-              onClick={() => window.print()}
+              onClick={handlePrint}
             >
               <PrintIcon />
             </IconButton>,
@@ -138,7 +157,7 @@ function Component() {
                 <Push key={_id} href={`/performance/view/${_id}`}>
                   <PerformanceListItem
                     performance={performance}
-                    checked={selected.indexOf(performance) !== -1}
+                    checked={!!selected.find((item) => item._id === _id)}
                     onToggle={handleToggle(performance)}
                   />
                 </Push>
@@ -147,7 +166,7 @@ function Component() {
           </List>
         </Content>
       }
-      print={<PrintTable list={selected} />}
+      print={!!print && <PrintTable list={selected} />}
     />
   );
 }
