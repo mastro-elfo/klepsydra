@@ -7,5 +7,5 @@ export function useTitle(title) {
     } else {
       document.title = "Klepsýdra";
     }
-  }, []);
+  }, [title]);
 }
