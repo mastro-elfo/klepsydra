@@ -167,7 +167,7 @@ function Component() {
           </List>
         </Content>
       }
-      print={!!print && <PrintTable list={selected} />}
+      print={!!print ? <PrintTable list={selected} /> : null}
     />
   );
 }
