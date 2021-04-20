@@ -22,7 +22,7 @@ export default function Controllers() {
       start: new Date(),
       pauses: [],
     });
-    enqueueSnackbar("Cronometro avviato", { variant: "success" });
+    enqueueSnackbar("Cronometro avviato", { variant: "info" });
   };
 
   const handlePause = () => {
@@ -31,7 +31,7 @@ export default function Controllers() {
       status: "paused",
       pause: create(),
     });
-    enqueueSnackbar("Cronometro in pausa", { variant: "success" });
+    enqueueSnackbar("Cronometro in pausa", { variant: "info" });
   };
 
   const handleResume = () => {
@@ -42,7 +42,7 @@ export default function Controllers() {
       pauses: [{ ...pause, end }, ...(pauses || [])],
       pause: null,
     });
-    enqueueSnackbar("Cronometro avviato", { variant: "success" });
+    enqueueSnackbar("Cronometro avviato", { variant: "info" });
   };
 
   return [

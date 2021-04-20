@@ -53,7 +53,7 @@ export default function StopDialogButton() {
         : 0,
     };
     setTracker(final);
-    enqueueSnackbar("Cronometro interrotto", { variant: "success" });
+    enqueueSnackbar("Cronometro interrotto", { variant: "info" });
     create(fromObject(final))
       .then(({ id }) => {
         enqueueSnackbar("Prestazione salvata", { variant: "success" });
