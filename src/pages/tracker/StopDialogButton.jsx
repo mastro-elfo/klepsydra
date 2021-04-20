@@ -15,7 +15,7 @@ import { DangerButton } from "mastro-elfo-mui";
 import { useTracker } from "./context";
 import { useSettings } from "../settings/context";
 import { roundCost, timeDiff } from "./utils";
-import { create } from "../../controllers/performance";
+import { create, fromObject } from "../../controllers/performance";
 
 import StopIcon from "@material-ui/icons/Stop";
 
@@ -54,7 +54,7 @@ export default function StopDialogButton() {
     };
     setTracker(final);
     enqueueSnackbar("Cronometro interrotto", { variant: "success" });
-    create(final)
+    create(fromObject(final))
       .then(({ id }) => {
         enqueueSnackbar("Prestazione salvata", { variant: "success" });
         setTimeout(replace, 500, `/performance/view/${id}`);

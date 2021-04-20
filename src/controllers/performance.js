@@ -1,10 +1,37 @@
 import Performance from "../db/performance";
 
+const defaultValue = {
+  client: null,
+  discount: 0,
+  // TODO: Remove, use length instead
+  end: null,
+  length: 0,
+  note: "",
+  pauses: [],
+  payments: [],
+  price: 0,
+  start: null,
+  status: null,
+};
+const keys = Object.keys(defaultValue);
+
+export function fromObject(data) {
+  return Object.assign(
+    {},
+    defaultValue,
+    Object.keys(data)
+      .filter((k) => keys.indexOf(k) !== -1)
+      .reduce((acc, curr) => ({ ...acc, [curr]: data[curr] }), {})
+  );
+}
+
 const fields = [
   "_id",
   "client",
   "discount",
+  // TODO: Remove, use length instead
   "end",
+  "length",
   "note",
   "pauses",
   "payed",
