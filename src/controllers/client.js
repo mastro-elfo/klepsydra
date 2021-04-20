@@ -1,4 +1,17 @@
+import { merge } from "./utils";
 import Client from "../db/client";
+
+export const defaultValue = {
+  email: "",
+  name: "",
+  price: 0,
+  surname: "",
+  telephone: "",
+};
+
+export function fromObject(data) {
+  return merge(defaultValue, data);
+}
 
 const fields = ["_id", "email", "name", "price", "surname", "telephone"];
 

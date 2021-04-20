@@ -12,7 +12,7 @@ import {
 import { BackIconButton, Content, Header, Page } from "mastro-elfo-mui";
 
 import { useSettings } from "../settings/context";
-import { create } from "../../controllers/client";
+import { create, fromObject } from "../../controllers/client";
 
 import SaveIcon from "@material-ui/icons/Save";
 
@@ -21,21 +21,18 @@ function Component() {
   const { enqueueSnackbar } = useSnackbar();
   const { state } = useLocation();
   const [settings] = useSettings();
-  const [client, setClient] = useState({
-    name: "",
-    surname: "",
-    telephone: "",
-    email: "",
-    price: settings.price,
-    contacts: [],
-    ...state,
-  });
+  const [client, setClient] = useState(
+    fromObject({
+      price: settings.price,
+      ...state,
+    })
+  );
 
   const handleChange = (field, cast = (v) => v) => ({ target: { value } }) =>
     setClient({ ...client, [field]: cast(value) });
 
   const handleSave = () => {
-    create(client)
+    create(fromObject(client))
       .then(({ id }) => {
         // console.log(r);
         enqueueSnackbar("Documento creato", { variant: "success" });
