@@ -1,6 +1,7 @@
+import { merge } from "./utils";
 import Performance from "../db/performance";
 
-const defaultValue = {
+export const defaultValue = {
   client: null,
   discount: 0,
   // TODO: Remove, use length instead
@@ -13,16 +14,9 @@ const defaultValue = {
   start: null,
   status: null,
 };
-const keys = Object.keys(defaultValue);
 
 export function fromObject(data) {
-  return Object.assign(
-    {},
-    defaultValue,
-    Object.keys(data)
-      .filter((k) => keys.indexOf(k) !== -1)
-      .reduce((acc, curr) => ({ ...acc, [curr]: data[curr] }), {})
-  );
+  return merge(defaultValue, data);
 }
 
 const fields = [
