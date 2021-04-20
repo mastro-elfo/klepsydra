@@ -45,6 +45,7 @@ function Component() {
       .slice()
       .filter(({ _id }) => list.find((item) => item._id === _id));
     setSelected(_selected);
+    // eslint-disable-next-line
   }, [list]);
 
   useEffect(() => {
