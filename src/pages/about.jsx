@@ -9,9 +9,12 @@ import {
 import { BackIconButton, Content, Header, Page } from "mastro-elfo-mui";
 import DrawerIcon from "./about/logo";
 import background from "./about/background.svg";
+
+import { useTitle } from "./utils";
 import { version } from "../version.json";
 
 function Component() {
+  useTitle("Informazioni");
   return (
     <Page
       TopFabProps={{ color: "secondary", size: "small" }}

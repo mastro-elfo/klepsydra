@@ -9,7 +9,10 @@ import {
 import { Content, Header, Page, Push } from "mastro-elfo-mui";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 
+import { useTitle } from "./utils";
+
 function Component() {
+  useTitle("404 Non trovato");
   return (
     <Page
       TopFabProps={{ color: "secondary", size: "small" }}

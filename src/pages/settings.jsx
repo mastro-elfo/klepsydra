@@ -11,10 +11,12 @@ import { BackIconButton, Content, Header, Page } from "mastro-elfo-mui";
 
 import DrawerIcon from "@material-ui/icons/Settings";
 
+import { useTitle } from "./utils";
 import ListItemHelp from "./settings/ListItemHelp";
 import { useSettings } from "./settings/context";
 
 function Component() {
+  useTitle("Impostazioni");
   const [settings, setSettings] = useSettings();
 
   const handleChange = (field, cast = (v) => v) => ({ target: { value } }) =>

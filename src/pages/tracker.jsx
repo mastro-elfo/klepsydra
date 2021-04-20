@@ -5,6 +5,7 @@ import { InputAdornment, List, ListItem, TextField } from "@material-ui/core";
 
 import { BackIconButton, Content, Header, Page } from "mastro-elfo-mui";
 
+import { useTitle } from "./utils";
 import { useSettings } from "./settings/context";
 import Client from "./tracker/Client";
 import Controllers from "./tracker/Controllers";
@@ -16,6 +17,7 @@ import { useTracker } from "./tracker/context";
 import DrawerIcon from "@material-ui/icons/HourglassEmpty";
 
 function Component() {
+  useTitle("Timer");
   const { state } = useLocation();
   const [settings] = useSettings();
   const [tracker, setTracker] = useTracker();

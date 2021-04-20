@@ -6,7 +6,10 @@ import { route as Edit } from "./client/edit";
 import { route as List } from "./client/list";
 import { route as View } from "./client/view";
 
+import { useTitle } from "./utils";
+
 function Component() {
+  useTitle("Clienti");
   return (
     <Switch>
       <Route {...Create} />

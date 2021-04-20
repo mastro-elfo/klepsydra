@@ -14,7 +14,7 @@ import {
   Push,
 } from "mastro-elfo-mui";
 
-// import { useTracker } from "./tracker/context";
+import { useTitle } from "./utils";
 
 // Import drawer items
 import { drawer as about } from "./about";
@@ -34,6 +34,7 @@ import ClientIcon from "@material-ui/icons/Person";
 import PerformanceIcon from "@material-ui/icons/School";
 
 function Component() {
+  useTitle();
   const { push } = useHistory();
   const { enqueueSnackbar } = useSnackbar();
   const [trackerContext] = useTracker();
