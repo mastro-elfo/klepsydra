@@ -103,6 +103,15 @@ function Component() {
   const handleChangeValue = (field, cast = (v) => v) => (value) =>
     setPerformance({ ...performance, [field]: cast(value) });
 
+  // Changing the start means also changing the end to keep the length constant
+  const handleChangeStart = (value) =>
+    setPerformance({
+      ...performance,
+      start: value,
+      end: new Date(+new Date(end) + (new Date(value) - new Date(start))),
+    });
+
+  // Changing the length means changing the end value
   const handleChangeLength = (value) =>
     setPerformance({
       ...performance,
@@ -155,7 +164,7 @@ function Component() {
                 fullWidth
                 label="Data di inizio"
                 value={start}
-                onChange={handleChangeValue("start")}
+                onChange={handleChangeStart}
                 format="dd/MM/yyyy"
               />
               <KeyboardTimePicker
@@ -163,7 +172,7 @@ function Component() {
                 ampm={false}
                 label="Ora di inizio"
                 value={start}
-                onChange={handleChangeValue("start")}
+                onChange={handleChangeStart}
                 views={["hours", "minutes", "seconds"]}
                 keyboardIcon={<ClockIcon />}
                 format="HH:mm:ss"

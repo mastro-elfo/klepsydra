@@ -40,18 +40,21 @@ export default function PauseEdit({ pause: _pause, onChange, onDelete }) {
     setPause(newPause);
   };
 
-  const handleChangeValue = (field) => (value) => {
-    const newPause = { ...pause, [field]: value };
-    setPause(newPause);
-  };
+  const handleChangeValue = (field) => (value) =>
+    setPause({ ...pause, [field]: value });
 
-  const handleChangeLength = (value) => {
-    const newPause = {
+  const handleChangeStart = (value) =>
+    setPause({
+      ...pause,
+      start: value,
+      end: new Date(+new Date(end) + (new Date(value) - new Date(start))),
+    });
+
+  const handleChangeLength = (value) =>
+    setPause({
       ...pause,
       end: new Date(+new Date(end) + (value - length)),
-    };
-    setPause(newPause);
-  };
+    });
 
   const handleDelete = () => {
     onDelete();
@@ -86,7 +89,7 @@ export default function PauseEdit({ pause: _pause, onChange, onDelete }) {
                 fullWidth
                 label="Data di inizio"
                 value={start}
-                onChange={handleChangeValue("start")}
+                onChange={handleChangeStart}
                 format="dd/MM/yyyy"
               />
             </ListItem>
@@ -96,7 +99,7 @@ export default function PauseEdit({ pause: _pause, onChange, onDelete }) {
                 ampm={false}
                 label="Ora di inizio"
                 value={start}
-                onChange={handleChangeValue("start")}
+                onChange={handleChangeStart}
                 views={["hours", "minutes", "seconds"]}
                 keyboardIcon={<ClockIcon />}
                 format="HH:mm:ss"
