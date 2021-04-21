@@ -21,6 +21,15 @@ export default function PaymentEditList({
   const [payments, setPayments] = useState(_payments);
 
   useEffect(() => {
+    if (_payments.length > payments.length) {
+      console.log("Add from outside");
+      // A payment is added from outside
+      setPayments(_payments);
+    }
+    // eslint-disable-next-line
+  }, [_payments]);
+
+  useEffect(() => {
     const to = setTimeout(onChange, 250, payments);
     return () => clearTimeout(to);
     // eslint-disable-next-line
