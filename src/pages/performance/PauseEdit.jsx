@@ -40,8 +40,8 @@ export default function PauseEdit({ pause: _pause, onChange, onDelete }) {
     setPause(newPause);
   };
 
-  const handleChangeValue = (field) => (value) =>
-    setPause({ ...pause, [field]: value });
+  // const handleChangeValue = (field) => (value) =>
+  //   setPause({ ...pause, [field]: value });
 
   const handleChangeStart = (value) =>
     setPause({
