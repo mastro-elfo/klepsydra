@@ -19,7 +19,7 @@ export default function Latest({ id }) {
   const [list, setList] = useState();
 
   useEffect(() => {
-    latest(id)
+    latest({ client_id: id })
       .then((docs) => setList(docs))
       .catch((e) => {
         console.error(e);

@@ -59,10 +59,14 @@ export function search(query) {
   return new Performance()
     .search({
       selector: {
-        start: { $gt: null },
-        $or: [
-          { "client.name": { $regex: re } },
-          { "client.surname": { $regex: re } },
+        $and: [
+          { start: { $gt: null } },
+          {
+            $or: [
+              { "client.name": { $regex: re } },
+              { "client.surname": { $regex: re } },
+            ],
+          },
         ],
       },
       fields,
@@ -74,12 +78,14 @@ export function search(query) {
     });
 }
 
-export function latest(client_id) {
+export function latest({ client_id = null }) {
   return new Performance()
     .search({
       selector: {
-        start: { $gt: null },
-        ...(client_id ? { "client._id": client_id } : null),
+        $and: [
+          { start: { $gt: null } },
+          client_id ? { "client._id": client_id } : {},
+        ],
       },
       fields,
       sort: [{ start: "desc" }],

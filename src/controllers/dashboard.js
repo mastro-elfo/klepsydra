@@ -5,7 +5,7 @@ import {
 } from "./performance";
 
 export function latest() {
-  return Promise.all([latest_client(), latest_performance()]);
+  return Promise.all([latest_client(), latest_performance({})]);
 }
 
 export function search(query) {

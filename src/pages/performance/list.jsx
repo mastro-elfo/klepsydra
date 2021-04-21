@@ -1,6 +1,15 @@
 import { useEffect, useState } from "react";
 import { useSnackbar } from "notistack";
-import { Checkbox, IconButton, List, Typography } from "@material-ui/core";
+import {
+  Checkbox,
+  Grid,
+  IconButton,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+} from "@material-ui/core";
 import {
   BackIconButton,
   Content,
@@ -16,6 +25,8 @@ import PrintTable from "./PrintTable";
 import { latest, search } from "../../controllers/performance";
 
 import AddIcon from "@material-ui/icons/Add";
+import BlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
+import CheckIcon from "@material-ui/icons/CheckBox";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
 import PrintIcon from "@material-ui/icons/Print";
 
@@ -23,14 +34,25 @@ function Component() {
   const { enqueueSnackbar } = useSnackbar();
   const [list, setList] = useState();
   const [selected, setSelected] = useState([]);
-  const [didSearch, setDidSearch] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  // const [didSearch, setDidSearch] = useState(false);
+  const [includePayed, setIncludePayed] = useState(true);
+  const [includeNotPayed, setIncludeNotPayed] = useState(true);
   const [print, setPrint] = useState(false);
 
   useEffect(() => {
-    if (!didSearch) {
-      setDidSearch(true);
+    if (!searchQuery) {
+      // setDidSearch(true);
       // Load latest
-      latest()
+      latest({ includePayed, includeNotPayed })
+        .then((docs) =>
+          docs.filter(
+            (d) =>
+              d.payed === undefined ||
+              (includePayed && d.payed === true) ||
+              (includeNotPayed && d.payed === false)
+          )
+        )
         .then((docs) => setList(docs))
         .catch((e) => {
           console.error(e);
@@ -38,7 +60,40 @@ function Component() {
         });
     }
     // eslint-disable-next-line
-  }, [didSearch]);
+  }, [searchQuery, includePayed, includeNotPayed]);
+
+  useEffect(() => {
+    if (searchQuery) {
+      // TODO: Evetually move to handleSearch
+      search(searchQuery, { includePayed, includeNotPayed })
+        .then((docs) =>
+          docs.filter(
+            (d) =>
+              d.payed === undefined ||
+              (includePayed && d.payed === true) ||
+              (includeNotPayed && d.payed === false)
+          )
+        )
+        .then((docs) => setList(docs))
+        .catch((e) => {
+          console.error(e);
+          enqueueSnackbar(`${e.name} ${e.message}`, { variant: "error" });
+        });
+    }
+    // eslint-disable-next-line
+  }, [searchQuery, includePayed, includeNotPayed]);
+
+  // useEffect(() => {
+  //   if (!(includePayed || includeNotPayed)) {
+  //     setIncludeNotPayed(true);
+  //   }
+  // }, [includePayed]);
+  //
+  // useEffect(() => {
+  //   if (!(includePayed || includeNotPayed)) {
+  //     setIncludePayed(true);
+  //   }
+  // }, [includeNotPayed]);
 
   useEffect(() => {
     const _selected = selected
@@ -79,20 +134,23 @@ function Component() {
 
   const handleSearch = (_, q) => {
     if (q === "") {
-      setDidSearch(false);
+      // setDidSearch(false);
+      setSearchQuery("");
     } else {
-      setDidSearch(true);
-      search(q)
-        .then((docs) => setList(docs))
-        .catch((e) => {
-          console.error(e);
-          enqueueSnackbar(`${e.name} ${e.message}`, { variant: "error" });
-        });
+      // setDidSearch(true);
+      setSearchQuery(q);
+      // search(q)
+      //   .then((docs) => setList(docs))
+      //   .catch((e) => {
+      //     console.error(e);
+      //     enqueueSnackbar(`${e.name} ${e.message}`, { variant: "error" });
+      //   });
     }
   };
 
   const handleClear = () => {
-    setDidSearch(false);
+    // setDidSearch(false);
+    setSearchQuery("");
   };
 
   const handlePrint = () => {
@@ -145,6 +203,38 @@ function Component() {
       }
       content={
         <Content>
+          <Grid container>
+            <Grid item>
+              <ListItem button onClick={() => setIncludePayed(!includePayed)}>
+                <ListItemIcon>
+                  {includePayed ? (
+                    <CheckIcon color="secondary" />
+                  ) : (
+                    <BlankIcon />
+                  )}
+                </ListItemIcon>
+                <ListItemText primary="Pagate" />
+              </ListItem>
+            </Grid>
+            <Grid item>
+              <ListItem
+                button
+                onClick={() => setIncludeNotPayed(!includeNotPayed)}
+              >
+                <ListItemIcon>
+                  {includeNotPayed ? (
+                    <CheckIcon color="secondary" />
+                  ) : (
+                    <BlankIcon />
+                  )}
+                </ListItemIcon>
+                <ListItemText primary="Da pagare" />
+              </ListItem>
+            </Grid>
+            <Grid item></Grid>
+            <Grid item></Grid>
+          </Grid>
+
           {list.length === 0 && (
             <Typography>
               Non ci sono prestazioni, inizia a tracciare per usare questa
