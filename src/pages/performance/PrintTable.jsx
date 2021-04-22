@@ -18,7 +18,7 @@ import { TableHeadCell } from "mastro-elfo-mui";
 import { useSettings } from "../settings/context";
 import { delta2hms, timeDiff } from "../tracker/utils";
 
-export default function PrintTable({ list }) {
+export default function PrintTable({ list, data: { title, before, after } }) {
   // console.log(list);
   const [settings] = useSettings();
 
@@ -44,47 +44,67 @@ export default function PrintTable({ list }) {
   const payed = list.every(({ payed }) => !!payed);
 
   return (
-    <TableContainer>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableHeadCell>Data e Ora</TableHeadCell>
-            <TableHeadCell>Durata</TableHeadCell>
-            <TableHeadCell>Prezzo {settings.currency}/h</TableHeadCell>
-            <TableHeadCell>Costo {settings.currency}</TableHeadCell>
-            <TableHeadCell>Sconto {settings.currency}</TableHeadCell>
-            <TableHeadCell>Tot. {settings.currency}</TableHeadCell>
-          </TableRow>
-        </TableHead>
-        <TableFooter>
-          <TableRow>
-            <Borderless colSpan={3}>
-              <Typography variant="button" display="block" align="right">
-                Totale
-              </Typography>
-            </Borderless>
-            <Borderless>{cost.toFixed(2)}</Borderless>
-            <Borderless>{discount.toFixed(2)}</Borderless>
-            <Borderless>{total.toFixed(2)}</Borderless>
-          </TableRow>
-          {!payed && (
+    <Fragment>
+      {!!title && (
+        <Typography variant="h4" gutterBottom>
+          {title}
+        </Typography>
+      )}
+      {!!before &&
+        before.map((p, i) => (
+          <Typography key={i} variant="body2">
+            {p}
+          </Typography>
+        ))}
+      {!!before && <Typography variant="body2" gutterBottom></Typography>}
+      <TableContainer>
+        <Table>
+          <TableHead>
             <TableRow>
-              <TableCell colSpan={5}>
-                <Typography variant="button" display="block" align="right">
-                  Da Pagare
-                </Typography>
-              </TableCell>
-              <TableCell>{payed ? "" : due.toFixed(2)}</TableCell>
+              <TableHeadCell>Data e Ora</TableHeadCell>
+              <TableHeadCell>Durata</TableHeadCell>
+              <TableHeadCell>Prezzo {settings.currency}/h</TableHeadCell>
+              <TableHeadCell>Costo {settings.currency}</TableHeadCell>
+              <TableHeadCell>Sconto {settings.currency}</TableHeadCell>
+              <TableHeadCell>Tot. {settings.currency}</TableHeadCell>
             </TableRow>
-          )}
-        </TableFooter>
-        <TableBody>
-          {list.map(({ _id, ...rest }) => (
-            <PrintTableRow key={_id} {...rest} />
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableFooter>
+            <TableRow>
+              <Borderless colSpan={3}>
+                <Typography variant="button" display="block" align="right">
+                  Totale
+                </Typography>
+              </Borderless>
+              <Borderless>{cost.toFixed(2)}</Borderless>
+              <Borderless>{discount.toFixed(2)}</Borderless>
+              <Borderless>{total.toFixed(2)}</Borderless>
+            </TableRow>
+            {!payed && (
+              <TableRow>
+                <TableCell colSpan={5}>
+                  <Typography variant="button" display="block" align="right">
+                    Da Pagare
+                  </Typography>
+                </TableCell>
+                <TableCell>{payed ? "" : due.toFixed(2)}</TableCell>
+              </TableRow>
+            )}
+          </TableFooter>
+          <TableBody>
+            {list.map(({ _id, ...rest }) => (
+              <PrintTableRow key={_id} {...rest} />
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      {!!after &&
+        after.map((p, i) => (
+          <Typography key={i} variant="body2">
+            {p}
+          </Typography>
+        ))}
+    </Fragment>
   );
 }
 

@@ -21,6 +21,7 @@ import {
 
 import Loader from "./Loader";
 import PerformanceListItem from "./PerformanceListItem";
+import PrintDialogButton from "./PrintDialogButton";
 import PrintTable from "./PrintTable";
 import { latest, search } from "../../controllers/performance";
 
@@ -39,6 +40,7 @@ function Component() {
   const [includePayed, setIncludePayed] = useState(true);
   const [includeNotPayed, setIncludeNotPayed] = useState(true);
   const [print, setPrint] = useState(false);
+  const [printData, setPrintData] = useState({});
 
   useEffect(() => {
     if (!searchQuery) {
@@ -105,7 +107,12 @@ function Component() {
 
   useEffect(() => {
     if (print) {
-      window.print();
+      const to = setTimeout(() => {
+        window.print();
+        setPrint(false);
+        // Delay 225 because modal dialog has opacity transition 225ms long
+      }, 225);
+      return () => clearTimeout(to);
     }
   }, [print]);
 
@@ -153,8 +160,9 @@ function Component() {
     setSearchQuery("");
   };
 
-  const handlePrint = () => {
+  const handlePrint = (data) => {
     // window.print();
+    setPrintData(data || {});
     setPrint(true);
   };
 
@@ -182,13 +190,18 @@ function Component() {
             <IconButton key="pay" disabled={selected.length === 0}>
               <MonetizationOnIcon />
             </IconButton>,
-            <IconButton
+            // <IconButton
+            //   key="_print"
+            //   disabled={true || selected.length === 0}
+            //   onClick={handlePrint}
+            // >
+            //   <PrintIcon />
+            // </IconButton>,
+            <PrintDialogButton
               key="print"
+              onPrint={handlePrint}
               disabled={selected.length === 0}
-              onClick={handlePrint}
-            >
-              <PrintIcon />
-            </IconButton>,
+            />,
             <Checkbox
               key="select"
               checked={list.length > 0 && list.length === selected.length}
@@ -257,7 +270,7 @@ function Component() {
           </List>
         </Content>
       }
-      print={!!print ? <PrintTable list={selected} /> : null}
+      print={!!print ? <PrintTable list={selected} data={printData} /> : null}
     />
   );
 }
