@@ -55,7 +55,14 @@ export function destroy(id) {
 }
 
 export function search(query) {
-  const re = RegExp(`.*${query}.*`, "i");
+  // const re = RegExp(`.*${query}.*`, "i");
+  const re = RegExp(
+    query
+      .split(" ")
+      .map((q) => `.*${q}.*`)
+      .join("|"),
+    "i"
+  );
   return new Performance()
     .search({
       selector: {
