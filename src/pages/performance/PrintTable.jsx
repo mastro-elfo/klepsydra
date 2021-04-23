@@ -23,7 +23,7 @@ import CheckIcon from "@material-ui/icons/CheckCircle";
 export default function PrintTable({ list }) {
   // console.log(list);
   const [settings] = useSettings();
-  const { title, before, after } = settings;
+  const { printTitle, printBefore, printAfter } = settings;
 
   const cost = list
     .map(
@@ -43,18 +43,18 @@ export default function PrintTable({ list }) {
 
   return (
     <Fragment>
-      {!!title && (
+      {!!printTitle && (
         <Typography variant="h4" gutterBottom>
-          {title}
+          {printTitle}
         </Typography>
       )}
-      {!!before &&
-        before.map((p, i) => (
+      {!!printBefore &&
+        printBefore.map((p, i) => (
           <Typography key={i} variant="body2">
             {p}
           </Typography>
         ))}
-      {!!before && <Typography variant="body2" gutterBottom></Typography>}
+      {!!printBefore && <Typography variant="body2" gutterBottom></Typography>}
       <TableContainer>
         <Table>
           <TableHead>
@@ -96,8 +96,8 @@ export default function PrintTable({ list }) {
           </TableBody>
         </Table>
       </TableContainer>
-      {!!after &&
-        after.map((p, i) => (
+      {!!printAfter &&
+        printAfter.map((p, i) => (
           <Typography key={i} variant="body2">
             {p}
           </Typography>

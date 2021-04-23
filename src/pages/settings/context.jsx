@@ -5,6 +5,9 @@ const defaultValue = {
   enableDiscountRound: false,
   discountRound: 1,
   currency: "€",
+  printTitle: "",
+  printBefore: "",
+  printAfter: "",
 };
 
 function dump(settings) {

@@ -4,6 +4,7 @@ import {
   InputAdornment,
   List,
   ListItem,
+  ListSubheader,
   TextField,
   Typography,
 } from "@material-ui/core";
@@ -22,7 +23,15 @@ function Component() {
   const handleChange = (field, cast = (v) => v) => ({ target: { value } }) =>
     setSettings({ ...settings, [field]: cast(value) });
 
-  const { currency, discountRound, enableDiscountRound, price } = settings;
+  const {
+    currency,
+    discountRound,
+    enableDiscountRound,
+    price,
+    printTitle,
+    printBefore,
+    printAfter,
+  } = settings;
 
   return (
     <Page
@@ -96,6 +105,54 @@ function Component() {
                 label="Valuta"
                 onChange={handleChange("currency")}
                 value={currency}
+              />
+            </ListItem>
+          </List>
+
+          <List subheader={<ListSubheader>Stampa</ListSubheader>}>
+            <ListItem>
+              <ListItemHelp>
+                <Typography variant="body2">
+                  Titolo della pagina di stampa
+                </Typography>
+              </ListItemHelp>
+              <TextField
+                fullWidth
+                label="Titolo"
+                onChange={handleChange("printTitle")}
+                value={printTitle}
+              />
+            </ListItem>
+            <ListItem>
+              <ListItemHelp>
+                <Typography variant="body2">
+                  Testo prima della tabella, può contenere più righe
+                </Typography>
+              </ListItemHelp>
+              <TextField
+                fullWidth
+                label="Prima"
+                onChange={handleChange("printBefore")}
+                value={printBefore}
+                multiline
+                rows={2}
+                rowsMax={4}
+              />
+            </ListItem>
+            <ListItem>
+              <ListItemHelp>
+                <Typography variant="body2">
+                  Testo dopo la tabella, può contenere più righe
+                </Typography>
+              </ListItemHelp>
+              <TextField
+                fullWidth
+                label="Dopo"
+                onChange={handleChange("printAfter")}
+                value={printAfter}
+                multiline
+                rows={2}
+                rowsMax={4}
               />
             </ListItem>
           </List>
