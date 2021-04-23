@@ -21,7 +21,6 @@ import {
 
 import Loader from "./Loader";
 import PerformanceListItem from "./PerformanceListItem";
-import PrintDialogButton from "./PrintDialogButton";
 import PrintTable from "./PrintTable";
 import { latest, search } from "../../controllers/performance";
 
@@ -29,7 +28,7 @@ import AddIcon from "@material-ui/icons/Add";
 import BlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import CheckIcon from "@material-ui/icons/CheckBox";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
-// import PrintIcon from "@material-ui/icons/Print";
+import PrintIcon from "@material-ui/icons/Print";
 
 function Component() {
   const { enqueueSnackbar } = useSnackbar();
@@ -40,7 +39,6 @@ function Component() {
   const [includePayed, setIncludePayed] = useState(true);
   const [includeNotPayed, setIncludeNotPayed] = useState(true);
   const [print, setPrint] = useState(false);
-  const [printData, setPrintData] = useState({});
 
   useEffect(() => {
     if (!searchQuery) {
@@ -160,9 +158,7 @@ function Component() {
     setSearchQuery("");
   };
 
-  const handlePrint = (data) => {
-    // window.print();
-    setPrintData(data || {});
+  const handlePrint = () => {
     setPrint(true);
   };
 
@@ -190,18 +186,13 @@ function Component() {
             <IconButton key="pay" disabled={selected.length === 0}>
               <MonetizationOnIcon />
             </IconButton>,
-            // <IconButton
-            //   key="_print"
-            //   disabled={true || selected.length === 0}
-            //   onClick={handlePrint}
-            // >
-            //   <PrintIcon />
-            // </IconButton>,
-            <PrintDialogButton
+            <IconButton
               key="print"
-              onPrint={handlePrint}
               disabled={selected.length === 0}
-            />,
+              onClick={handlePrint}
+            >
+              <PrintIcon />
+            </IconButton>,
             <Checkbox
               key="select"
               checked={list.length > 0 && list.length === selected.length}
@@ -270,7 +261,7 @@ function Component() {
           </List>
         </Content>
       }
-      print={!!print ? <PrintTable list={selected} data={printData} /> : null}
+      print={!!print ? <PrintTable list={selected} /> : null}
     />
   );
 }

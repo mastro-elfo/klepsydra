@@ -20,9 +20,10 @@ import { delta2hms, timeDiff } from "../tracker/utils";
 
 import CheckIcon from "@material-ui/icons/CheckCircle";
 
-export default function PrintTable({ list, data: { title, before, after } }) {
+export default function PrintTable({ list }) {
   // console.log(list);
   const [settings] = useSettings();
+  const { title, before, after } = settings;
 
   const cost = list
     .map(
@@ -30,19 +31,14 @@ export default function PrintTable({ list, data: { title, before, after } }) {
         (timeDiff(start, end, pauses) / 1000 / 3600) * price
     )
     .reduce((acc, cur) => acc + cur, 0);
-
   const discount = list
     .map(({ discount }) => discount)
     .reduce((acc, cur) => acc + cur, 0);
-
   const total = cost - discount;
-
   const balance = list
     .map(({ payments }) => payments.reduce((acc, { value }) => acc + value, 0))
     .reduce((cur, acc) => cur + acc, 0);
-
   const due = total - balance;
-
   const payed = list.every(({ payed }) => !!payed);
 
   return (
