@@ -6,6 +6,7 @@ import {
   InputAdornment,
   List,
   ListItem,
+  // ListItemIcon,
   ListItemSecondaryAction,
   ListItemText,
   TextField,
@@ -23,6 +24,7 @@ import {
 import DurationField from "./DurationField";
 import PauseEditList from "./PauseEditList";
 import PaymentEditList from "./PaymentEditList";
+import { read as read_client } from "../../controllers/client";
 import { update, destroy } from "../../controllers/performance";
 import { roundCost, timeDiff } from "../tracker/utils";
 import { useSettings } from "../settings/context";
@@ -126,6 +128,16 @@ function Component() {
     });
   };
 
+  const handleReloadClient = () =>
+    read_client(client._id)
+      .then((client) => {
+        setPerformance({ ...performance, client });
+      })
+      .catch((e) => {
+        console.error(e);
+        enqueueSnackbar(`${e.name} ${e.message}`, { variant: "error" });
+      });
+
   return (
     <Page
       TopFabProps={{ color: "secondary", size: "small" }}
@@ -149,6 +161,13 @@ function Component() {
                 primary={`${name} ${surname}`}
                 secondary="Studente"
               />{" "}
+              <ListItemSecondaryAction>
+                <IconButton onClick={handleReloadClient}>
+                  <ReloadIcon />
+                </IconButton>
+              </ListItemSecondaryAction>
+            </ListItem>
+            <ListItem>
               <ListItemText
                 primary={`${balance.toFixed(2)} ${settings.currency}`}
                 secondary="Saldo"
