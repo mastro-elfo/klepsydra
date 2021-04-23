@@ -18,6 +18,8 @@ import { TableHeadCell } from "mastro-elfo-mui";
 import { useSettings } from "../settings/context";
 import { delta2hms, timeDiff } from "../tracker/utils";
 
+import CheckIcon from "@material-ui/icons/CheckCircle";
+
 export default function PrintTable({ list, data: { title, before, after } }) {
   // console.log(list);
   const [settings] = useSettings();
@@ -80,16 +82,16 @@ export default function PrintTable({ list, data: { title, before, after } }) {
               <Borderless>{discount.toFixed(2)}</Borderless>
               <Borderless>{total.toFixed(2)}</Borderless>
             </TableRow>
-            {!payed && (
-              <TableRow>
-                <TableCell colSpan={5}>
-                  <Typography variant="button" display="block" align="right">
-                    Da Pagare
-                  </Typography>
-                </TableCell>
-                <TableCell>{payed ? "" : due.toFixed(2)}</TableCell>
-              </TableRow>
-            )}
+            <TableRow>
+              <TableCell colSpan={5}>
+                <Typography variant="button" display="block" align="right">
+                  {payed ? "Pagato" : "Da Pagare"}
+                </Typography>
+              </TableCell>
+              <TableCell>
+                {payed ? <CheckIcon color="secondary" /> : due.toFixed(2)}
+              </TableCell>
+            </TableRow>
           </TableFooter>
           <TableBody>
             {list.map(({ _id, ...rest }) => (
@@ -137,7 +139,7 @@ function PrintTableRow({
     <Fragment key={start}>
       <TableRow>
         <Borderless>{new Date(start).toLocaleString()}</Borderless>
-        <Borderless>{delta2hms(timeDiff(start, end, pauses))}</Borderless>
+        <Borderless>{delta2hms(length)}</Borderless>
         <Borderless>{price.toFixed(2)}</Borderless>
         <Borderless>{cost.toFixed(2)}</Borderless>
         <Borderless>{discount.toFixed(2)}</Borderless>
@@ -150,13 +152,13 @@ function PrintTableRow({
           </Typography>
         </TableCell>
         <TableCell colSpan={2}>
-          {!payed && (
-            <Typography variant="button" display="block" align="right">
-              Da Pagare
-            </Typography>
-          )}
+          <Typography variant="button" display="block" align="right">
+            {payed ? "Pagato" : "Da Pagare"}
+          </Typography>
         </TableCell>
-        <TableCell>{!payed && due.toFixed(2)}</TableCell>
+        <TableCell>
+          {payed ? <CheckIcon color="secondary" /> : due.toFixed(2)}
+        </TableCell>
       </TableRow>
     </Fragment>
   );
