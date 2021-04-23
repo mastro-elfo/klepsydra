@@ -78,7 +78,7 @@ export function search(query) {
     });
 }
 
-export function latest({ client_id = null }) {
+export function latest({ client_id = null } = {}) {
   return new Performance()
     .search({
       selector: {

@@ -5,9 +5,9 @@ import {
   Grid,
   IconButton,
   List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
+  // ListItem,
+  // ListItemIcon,
+  // ListItemText,
   Typography,
 } from "@material-ui/core";
 import {
@@ -25,8 +25,8 @@ import PrintTable from "./PrintTable";
 import { latest, search } from "../../controllers/performance";
 
 import AddIcon from "@material-ui/icons/Add";
-import BlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
-import CheckIcon from "@material-ui/icons/CheckBox";
+// import BlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
+// import CheckIcon from "@material-ui/icons/CheckBox";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
 import PrintIcon from "@material-ui/icons/Print";
 
@@ -35,24 +35,12 @@ function Component() {
   const [list, setList] = useState();
   const [selected, setSelected] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  // const [didSearch, setDidSearch] = useState(false);
-  const [includePayed, setIncludePayed] = useState(true);
-  const [includeNotPayed, setIncludeNotPayed] = useState(true);
   const [print, setPrint] = useState(false);
 
   useEffect(() => {
     if (!searchQuery) {
-      // setDidSearch(true);
       // Load latest
-      latest({ includePayed, includeNotPayed })
-        .then((docs) =>
-          docs.filter(
-            (d) =>
-              d.payed === undefined ||
-              (includePayed && d.payed === true) ||
-              (includeNotPayed && d.payed === false)
-          )
-        )
+      latest()
         .then((docs) => setList(docs))
         .catch((e) => {
           console.error(e);
@@ -60,20 +48,12 @@ function Component() {
         });
     }
     // eslint-disable-next-line
-  }, [searchQuery, includePayed, includeNotPayed]);
+  }, [searchQuery]);
 
   useEffect(() => {
     if (searchQuery) {
       // TODO: Evetually move to handleSearch
-      search(searchQuery, { includePayed, includeNotPayed })
-        .then((docs) =>
-          docs.filter(
-            (d) =>
-              d.payed === undefined ||
-              (includePayed && d.payed === true) ||
-              (includeNotPayed && d.payed === false)
-          )
-        )
+      search(searchQuery)
         .then((docs) => setList(docs))
         .catch((e) => {
           console.error(e);
@@ -81,19 +61,7 @@ function Component() {
         });
     }
     // eslint-disable-next-line
-  }, [searchQuery, includePayed, includeNotPayed]);
-
-  // useEffect(() => {
-  //   if (!(includePayed || includeNotPayed)) {
-  //     setIncludeNotPayed(true);
-  //   }
-  // }, [includePayed]);
-  //
-  // useEffect(() => {
-  //   if (!(includePayed || includeNotPayed)) {
-  //     setIncludePayed(true);
-  //   }
-  // }, [includeNotPayed]);
+  }, [searchQuery]);
 
   useEffect(() => {
     const _selected = selected
@@ -208,33 +176,9 @@ function Component() {
       content={
         <Content>
           <Grid container>
-            <Grid item>
-              <ListItem button onClick={() => setIncludePayed(!includePayed)}>
-                <ListItemIcon>
-                  {includePayed ? (
-                    <CheckIcon color="secondary" />
-                  ) : (
-                    <BlankIcon />
-                  )}
-                </ListItemIcon>
-                <ListItemText primary="Pagate" />
-              </ListItem>
-            </Grid>
-            <Grid item>
-              <ListItem
-                button
-                onClick={() => setIncludeNotPayed(!includeNotPayed)}
-              >
-                <ListItemIcon>
-                  {includeNotPayed ? (
-                    <CheckIcon color="secondary" />
-                  ) : (
-                    <BlankIcon />
-                  )}
-                </ListItemIcon>
-                <ListItemText primary="Da pagare" />
-              </ListItem>
-            </Grid>
+            {
+              // Placheholder for date interval
+            }
             <Grid item></Grid>
             <Grid item></Grid>
           </Grid>
