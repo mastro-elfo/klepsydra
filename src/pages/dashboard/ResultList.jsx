@@ -10,7 +10,7 @@ export default function ResultList({ Item = ResultItem, Icon, list, title }) {
           {title} ({list.length})
         </Typography>
       </Grid>
-      <Grid item xs={12} container spacing={2}>
+      <Grid item xs={12} container>
         {list.map((item) => (
           <Item icon={Icon ? <Icon /> : <span />} {...item} />
         ))}
