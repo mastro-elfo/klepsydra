@@ -16,6 +16,8 @@ import { route as notfound } from "./pages/notfound";
 import { route as performance } from "./pages/performance";
 import { route as settings } from "./pages/settings";
 import { route as tracker } from "./pages/tracker";
+// Aside
+import Intro from "./pages/intro";
 
 // Import contextes
 import SettingsProvider from "./pages/settings/context";
@@ -69,6 +71,7 @@ export default function App() {
       WrapperProps={{
         Children: [
           { Component: SettingsProvider },
+          { Component: Intro },
           {
             Component: TrackerProvider,
           },

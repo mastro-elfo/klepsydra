@@ -8,6 +8,7 @@ const defaultValue = {
   printTitle: "",
   printBefore: "",
   printAfter: "",
+  intro: true,
 };
 
 function dump(settings) {

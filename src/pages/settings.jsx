@@ -5,6 +5,7 @@ import {
   List,
   ListItem,
   ListSubheader,
+  ListItemText,
   TextField,
   Typography,
 } from "@material-ui/core";
@@ -39,7 +40,7 @@ function Component() {
       header={<Header LeftAction={<BackIconButton />}>Impostazioni</Header>}
       content={
         <Content>
-          <List>
+          <List subheader={<ListSubheader>Generale</ListSubheader>}>
             <ListItem>
               <ListItemHelp>
                 <Typography variant="body2">
@@ -154,6 +155,20 @@ function Component() {
                 rows={2}
                 rowsMax={4}
               />
+            </ListItem>
+          </List>
+
+          <List subheader={<ListSubheader>Introduzione</ListSubheader>}>
+            <ListItem
+              button
+              onClick={() => setSettings({ ...settings, intro: true })}
+            >
+              <ListItemHelp>
+                <Typography variant="body2">
+                  Clicca per rivedere l'introduzione iniziale
+                </Typography>
+              </ListItemHelp>
+              <ListItemText primary="Rivedi Introduzione" />
             </ListItem>
           </List>
         </Content>
