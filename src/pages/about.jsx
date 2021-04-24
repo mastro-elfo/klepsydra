@@ -25,6 +25,12 @@ function Component() {
             <ListItem>
               <ListItemText primary={version} secondary="Versione" />
             </ListItem>
+            <ListItem>
+              <ListItemText
+                primary="Francesco Michienzi"
+                secondary="Sviluppo Software"
+              />
+            </ListItem>
           </List>
         </Content>
       }
