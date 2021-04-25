@@ -13,6 +13,7 @@ import Pauses from "./tracker/Pauses";
 import Status from "./tracker/Status";
 import Timer from "./tracker/Timer";
 import { useTracker } from "./tracker/context";
+import { fromObject } from "../controllers/tracker";
 
 import DrawerIcon from "@material-ui/icons/HourglassEmpty";
 
@@ -27,17 +28,18 @@ function Component() {
 
   useEffect(() => {
     // Initialize tracker
-    setTracker((t) => ({
-      client: null,
-      note: "",
-      pause: null,
-      pauses: [],
-      price: settings.price,
-      start: null,
-      status: null,
-      ...t,
-      ...state,
-    }));
+    // setTracker((t) => ({
+    //   client: null,
+    //   note: "",
+    //   pause: null,
+    //   pauses: [],
+    //   price: settings.price,
+    //   start: null,
+    //   status: null,
+    //   ...t,
+    //   ...state,
+    // }));
+    setTracker(fromObject(tracker, state));
     // eslint-disable-next-line
   }, []);
 
