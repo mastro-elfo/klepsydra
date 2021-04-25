@@ -4,10 +4,11 @@ import { useSnackbar } from "notistack";
 import { IconButton, List, ListItem, ListItemText } from "@material-ui/core";
 import { BackIconButton, Content, Header, Page, Push } from "mastro-elfo-mui";
 
+import ContactList from "./ContactList";
 import Latest from "./Latest";
 import Loading from "../loading";
 import { useSettings } from "../settings/context";
-import { read } from "../../controllers/client";
+import { fromObject, read } from "../../controllers/client";
 
 import EditIcon from "@material-ui/icons/Edit";
 import StartIcon from "@material-ui/icons/PlayArrow";
@@ -23,7 +24,7 @@ function Component() {
     read(id)
       .then((doc) => {
         // console.log(doc);
-        setClient(doc);
+        setClient(fromObject(doc));
       })
       .catch((e) => {
         console.error(e);
@@ -37,16 +38,7 @@ function Component() {
     return <Loading />;
   }
 
-  const {
-    _id,
-    createdAt,
-    updatedAt,
-    email,
-    name,
-    surname,
-    price,
-    telephone,
-  } = client;
+  const { _id, contacts, createdAt, updatedAt, name, surname, price } = client;
 
   return (
     <Page
@@ -66,7 +58,9 @@ function Component() {
               </IconButton>
             </Push>,
           ]}
-        >{`${name} ${surname}`}</Header>
+        >
+          {name || surname ? `${name} ${surname}` : "Scheda cliente"}
+        </Header>
       }
       content={
         <Content>
@@ -78,12 +72,6 @@ function Component() {
               <ListItemText primary={surname} secondary="Cognome" />
             </ListItem>
             <ListItem>
-              <ListItemText primary={email} secondary="Email" />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary={telephone} secondary="Telefono" />
-            </ListItem>
-            <ListItem>
               <ListItemText
                 primary={`${parseFloat(price).toFixed(2)} ${
                   settings.currency
@@ -91,6 +79,11 @@ function Component() {
                 secondary="Tariffa"
               />
             </ListItem>
+          </List>
+
+          <ContactList contacts={contacts} />
+
+          <List>
             <ListItem>
               <ListItemText
                 primary={new Date(createdAt).toLocaleString()}
@@ -104,6 +97,7 @@ function Component() {
               />
             </ListItem>
           </List>
+
           <Latest id={id} />
         </Content>
       }

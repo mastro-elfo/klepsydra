@@ -2,10 +2,12 @@ import { merge } from "./utils";
 import Client from "../db/client";
 
 export const defaultValue = {
-  email: "",
+  contacts: [],
   name: "",
   price: 0,
   surname: "",
+  // TODO: Deprecated, will be removed soon
+  email: "",
   telephone: "",
 };
 
@@ -13,7 +15,16 @@ export function fromObject(data) {
   return merge(defaultValue, data);
 }
 
-const fields = ["_id", "email", "name", "price", "surname", "telephone"];
+const fields = [
+  "_id",
+  "contacts",
+  "name",
+  "price",
+  "surname",
+  // TODO: Deprecated, will be removed soon
+  "email",
+  "telephone",
+];
 
 export async function init() {
   return new Client().init();
@@ -39,18 +50,19 @@ export function search(query) {
   const re = RegExp(
     query
       .split(" ")
+      .filter((q) => !!q.trim())
       .map((q) => `.*${q}.*`)
       .join("|"),
     "i"
   );
+  console.log(re);
   return new Client()
     .search({
       selector: {
         $or: [
           { name: { $regex: re } },
           { surname: { $regex: re } },
-          { email: { $regex: re } },
-          { telephone: { $regex: re } },
+          { contacts: { $elemMatch: { value: { $regex: re } } } },
         ],
       },
       fields,

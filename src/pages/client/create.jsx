@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core";
 import { BackIconButton, Content, Header, Page } from "mastro-elfo-mui";
 
+import ContactList from "./ContactList";
 import { useSettings } from "../settings/context";
 import { create, fromObject } from "../../controllers/client";
 
@@ -31,6 +32,9 @@ function Component() {
   const handleChange = (field, cast = (v) => v) => ({ target: { value } }) =>
     setClient({ ...client, [field]: cast(value) });
 
+  const handleChangeValue = (field) => (value) =>
+    setClient({ ...client, [field]: value });
+
   const handleSave = () => {
     create(fromObject(client))
       .then(({ id }) => {
@@ -44,7 +48,7 @@ function Component() {
       });
   };
 
-  const { name, surname, price, email, telephone } = client;
+  const { contacts, name, surname, price } = client;
 
   return (
     <Page
@@ -83,24 +87,6 @@ function Component() {
             <ListItem>
               <TextField
                 fullWidth
-                type="email"
-                label="Email"
-                value={email || ""}
-                onChange={handleChange("email")}
-              />
-            </ListItem>
-            <ListItem>
-              <TextField
-                fullWidth
-                type="tel"
-                label="Telefono"
-                value={telephone || ""}
-                onChange={handleChange("telephone")}
-              />
-            </ListItem>
-            <ListItem>
-              <TextField
-                fullWidth
                 label="Tariffa"
                 type="number"
                 value={parseFloat(price || 0).toFixed(2)}
@@ -115,6 +101,11 @@ function Component() {
               />
             </ListItem>
           </List>
+          <ContactList
+            edit={true}
+            contacts={contacts}
+            onChange={handleChangeValue("contacts")}
+          />
         </Content>
       }
     />

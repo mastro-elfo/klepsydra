@@ -17,9 +17,10 @@ import {
   Page,
 } from "mastro-elfo-mui";
 
+import ContactList from "./ContactList";
 import Loading from "../loading";
 import { useSettings } from "../settings/context";
-import { read, update, destroy } from "../../controllers/client";
+import { fromObject, read, update, destroy } from "../../controllers/client";
 
 import SaveIcon from "@material-ui/icons/Save";
 
@@ -35,7 +36,7 @@ function Component() {
       read(id)
         .then((doc) => {
           // console.log(doc);
-          setClient(doc);
+          setClient(fromObject(doc));
         })
         .catch((e) => {
           console.error(e);
@@ -51,6 +52,9 @@ function Component() {
 
   const handleChange = (field, cast = (v) => v) => ({ target: { value } }) =>
     setClient({ ...client, [field]: cast(value) });
+
+  const handleChangeValue = (field) => (value) =>
+    setClient({ ...client, [field]: value });
 
   const handleSave = () => {
     update(id, client)
@@ -78,7 +82,7 @@ function Component() {
       });
   };
 
-  const { email, name, surname, price, telephone } = client;
+  const { contacts, name, surname, price } = client;
 
   return (
     <Page
@@ -117,24 +121,6 @@ function Component() {
             <ListItem>
               <TextField
                 fullWidth
-                type="email"
-                label="Email"
-                value={email || ""}
-                onChange={handleChange("email")}
-              />
-            </ListItem>
-            <ListItem>
-              <TextField
-                fullWidth
-                type="tel"
-                label="Telefono"
-                value={telephone || ""}
-                onChange={handleChange("telephone")}
-              />
-            </ListItem>
-            <ListItem>
-              <TextField
-                fullWidth
                 label="Tariffa"
                 type="number"
                 value={parseFloat(price || 0).toFixed(2)}
@@ -149,6 +135,13 @@ function Component() {
               />
             </ListItem>
           </List>
+
+          <ContactList
+            contacts={contacts}
+            edit
+            onChange={handleChangeValue("contacts")}
+          />
+
           <List>
             <ListItem>
               <ConfirmDialogButton

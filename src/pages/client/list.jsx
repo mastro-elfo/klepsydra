@@ -82,7 +82,7 @@ function Component() {
       content={
         <Content>
           <List>
-            {list.map(({ _id, name, surname, email, contacts }) => (
+            {list.map(({ _id, name, surname, contacts }) => (
               <ListItem
                 key={_id}
                 button
@@ -90,7 +90,10 @@ function Component() {
               >
                 <ListItemText
                   primary={`${name} ${surname}`}
-                  secondary={`${email || ""}`}
+                  secondary={
+                    // TODO: Remove `contacts &&`
+                    `${contacts && contacts.length ? contacts[0].value : ""}`
+                  }
                 />
               </ListItem>
             ))}

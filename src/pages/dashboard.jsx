@@ -145,11 +145,12 @@ function Component() {
             Icon={ClientIcon}
             list={
               !!clientList &&
-              clientList.map(({ _id, name, surname, email, telephone }) => ({
+              clientList.map(({ _id, name, surname, contacts }) => ({
                 _id,
                 key: _id,
                 primary: `${name} ${surname}`,
-                secondary: email || telephone,
+                // TODO: Remove `contacts &&`
+                secondary: contacts && contacts.length ? contacts[0].value : "",
                 href: `/client/view/${_id}`,
               }))
             }
