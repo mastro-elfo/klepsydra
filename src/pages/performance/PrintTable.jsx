@@ -49,7 +49,7 @@ export default function PrintTable({ list }) {
         </Typography>
       )}
       {!!printBefore &&
-        printBefore.map((p, i) => (
+        printBefore.split("\n").map((p, i) => (
           <Typography key={i} variant="body2">
             {p}
           </Typography>
@@ -97,7 +97,7 @@ export default function PrintTable({ list }) {
         </Table>
       </TableContainer>
       {!!printAfter &&
-        printAfter.map((p, i) => (
+        printAfter.split("\n").map((p, i) => (
           <Typography key={i} variant="body2">
             {p}
           </Typography>
