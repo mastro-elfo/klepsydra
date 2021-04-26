@@ -2,6 +2,7 @@ import { merge } from "./utils";
 import Performance from "../db/performance";
 
 export const defaultValue = {
+  _id: undefined,
   client: null,
   discount: 0,
   // TODO: Remove, use length instead
