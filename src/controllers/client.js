@@ -2,6 +2,7 @@ import { merge } from "./utils";
 import Client from "../db/client";
 
 export const defaultValue = {
+  _id: undefined,
   contacts: [],
   name: "",
   price: 0,
