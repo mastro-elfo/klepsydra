@@ -28,17 +28,6 @@ function Component() {
 
   useEffect(() => {
     // Initialize tracker
-    // setTracker((t) => ({
-    //   client: null,
-    //   note: "",
-    //   pause: null,
-    //   pauses: [],
-    //   price: settings.price,
-    //   start: null,
-    //   status: null,
-    //   ...t,
-    //   ...state,
-    // }));
     setTracker(fromObject(tracker, state));
     // eslint-disable-next-line
   }, []);
@@ -92,8 +81,6 @@ function Component() {
             </ListItem>
             <ListItem>
               <Client />
-            </ListItem>
-            <ListItem>
               <TextField
                 fullWidth
                 label="Tariffa"
@@ -115,8 +102,8 @@ function Component() {
                 fullWidth
                 variant="outlined"
                 multiline
-                rows={2}
-                rowsMax={4}
+                rows={4}
+                rowsMax={8}
                 label="Note"
                 value={note}
                 onChange={handleChange("note")}
