@@ -22,8 +22,18 @@ export default function Intro({ children }) {
 
   const TUTORIAL = [
     {
-      title: "Introduzione",
-      content: ["Klepsýdra"],
+      title: "Klepsýdra",
+      content: ["Avvia il timer"],
+    },
+    {
+      title: "Studenti",
+      content: ["Gestisci l'elenco contatti dei tuoi studenti"],
+    },
+    {
+      title: "Prestazioni",
+      content: [
+        "Gestisci le prestazioni effettuate e stampa il resoconto in formato PDF",
+      ],
     },
     {
       title: "Iniziamo!",
