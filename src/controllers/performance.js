@@ -5,15 +5,14 @@ export const defaultValue = {
   _id: undefined,
   client: null,
   discount: 0,
-  // TODO: Remove, use length instead
   end: null,
-  length: 0,
+  // length: 0,
   note: "",
   pauses: [],
   payments: [],
   price: 0,
   start: null,
-  status: null,
+  // status: null,
 };
 
 export function fromObject(data) {
