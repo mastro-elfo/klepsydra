@@ -9,6 +9,7 @@ export const defaultValue = {
   // length: 0,
   note: "",
   pauses: [],
+  payed: false,
   payments: [],
   price: 0,
   start: null,
@@ -54,7 +55,10 @@ export function destroy(id) {
   return new Performance(id).delete();
 }
 
-export function search(query) {
+export function search(
+  query,
+  { fromDate = null, toDate = null, notPayed = false } = {}
+) {
   // const re = RegExp(`.*${query}.*`, "i");
   const re = RegExp(
     query
@@ -67,7 +71,13 @@ export function search(query) {
     .search({
       selector: {
         $and: [
-          { start: { $gt: null } },
+          { start: { $gte: fromDate ? fromDate.toISOString() : null } },
+          {
+            start: {
+              $lte: toDate ? toDate.toISOString() : new Date().toISOString(),
+            },
+          },
+          notPayed ? { payed: false } : { payed: { $gte: null } },
           {
             $or: [
               { "client.name": { $regex: re } },
@@ -85,12 +95,23 @@ export function search(query) {
     });
 }
 
-export function latest({ client_id = null } = {}) {
+export function latest({
+  client_id = null,
+  fromDate = null,
+  toDate = null,
+  notPayed = false,
+} = {}) {
   return new Performance()
     .search({
       selector: {
         $and: [
-          { start: { $gt: null } },
+          { start: { $gte: fromDate ? fromDate.toISOString() : null } },
+          {
+            start: {
+              $lte: toDate ? toDate.toISOString() : new Date().toISOString(),
+            },
+          },
+          notPayed ? { payed: false } : { payed: { $gte: null } },
           client_id ? { "client._id": client_id } : {},
         ],
       },

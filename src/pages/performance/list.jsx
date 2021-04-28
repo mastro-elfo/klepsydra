@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { useSnackbar } from "notistack";
 import {
+  Box,
   Checkbox,
   Grid,
   IconButton,
   List,
-  // ListItem,
-  // ListItemIcon,
-  // ListItemText,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Paper,
   Typography,
 } from "@material-ui/core";
 import {
@@ -19,14 +21,16 @@ import {
   Push,
 } from "mastro-elfo-mui";
 
+import { KeyboardDatePicker } from "@material-ui/pickers";
+
 import Loader from "./Loader";
 import PerformanceListItem from "./PerformanceListItem";
 import PrintTable from "./PrintTable";
 import { latest, search } from "../../controllers/performance";
 
 import AddIcon from "@material-ui/icons/Add";
-// import BlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
-// import CheckIcon from "@material-ui/icons/CheckBox";
+import BlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
+import CheckIcon from "@material-ui/icons/CheckBox";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
 import PrintIcon from "@material-ui/icons/Print";
 
@@ -36,11 +40,14 @@ function Component() {
   const [selected, setSelected] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [print, setPrint] = useState(false);
+  const [fromDate, setFromDate] = useState(null);
+  const [toDate, setToDate] = useState(null);
+  const [notPayed, setNotPayed] = useState(false);
 
   useEffect(() => {
     if (!searchQuery) {
       // Load latest
-      latest()
+      latest({ fromDate, toDate, notPayed })
         .then((docs) => setList(docs))
         .catch((e) => {
           console.error(e);
@@ -48,12 +55,11 @@ function Component() {
         });
     }
     // eslint-disable-next-line
-  }, [searchQuery]);
+  }, [searchQuery, fromDate, toDate, notPayed]);
 
   useEffect(() => {
     if (searchQuery) {
-      // TODO: Evetually move to handleSearch
-      search(searchQuery)
+      search(searchQuery, { fromDate, toDate, notPayed })
         .then((docs) => setList(docs))
         .catch((e) => {
           console.error(e);
@@ -61,7 +67,7 @@ function Component() {
         });
     }
     // eslint-disable-next-line
-  }, [searchQuery]);
+  }, [searchQuery, fromDate, toDate, notPayed]);
 
   useEffect(() => {
     const _selected = selected
@@ -107,22 +113,13 @@ function Component() {
 
   const handleSearch = (_, q) => {
     if (q === "") {
-      // setDidSearch(false);
       setSearchQuery("");
     } else {
-      // setDidSearch(true);
       setSearchQuery(q);
-      // search(q)
-      //   .then((docs) => setList(docs))
-      //   .catch((e) => {
-      //     console.error(e);
-      //     enqueueSnackbar(`${e.name} ${e.message}`, { variant: "error" });
-      //   });
     }
   };
 
   const handleClear = () => {
-    // setDidSearch(false);
     setSearchQuery("");
   };
 
@@ -175,13 +172,46 @@ function Component() {
       }
       content={
         <Content>
-          <Grid container>
-            {
-              // Placheholder for date interval
-            }
-            <Grid item></Grid>
-            <Grid item></Grid>
-          </Grid>
+          <Paper>
+            <Box padding={2}>
+              <Grid container justify="space-around">
+                <Grid item xs={12} sm="auto">
+                  <KeyboardDatePicker
+                    fullWidth
+                    clearable
+                    label="Da"
+                    value={fromDate}
+                    onChange={(date) => setFromDate(date)}
+                    maxDate={new Date()}
+                    format="dd/MM/yyyy"
+                  />
+                </Grid>
+                <Grid item xs={12} sm="auto">
+                  <KeyboardDatePicker
+                    fullWidth
+                    clearable
+                    label="A"
+                    value={toDate}
+                    onChange={(date) => setToDate(date)}
+                    maxDate={new Date()}
+                    format="dd/MM/yyyy"
+                  />
+                </Grid>
+                <Grid item xs={12} sm="auto">
+                  <ListItem button onClick={() => setNotPayed(!notPayed)}>
+                    <ListItemIcon>
+                      {notPayed ? (
+                        <CheckIcon color="secondary" />
+                      ) : (
+                        <BlankIcon />
+                      )}
+                    </ListItemIcon>
+                    <ListItemText primary="Non pagate" />
+                  </ListItem>
+                </Grid>
+              </Grid>
+            </Box>
+          </Paper>
 
           {list.length === 0 && (
             <Typography>
