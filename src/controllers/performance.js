@@ -71,9 +71,9 @@ export function search(
     .search({
       selector: {
         $and: [
-          { start: { $gte: fromDate ? fromDate.toISOString() : null } },
           {
             start: {
+              $gte: fromDate ? fromDate.toISOString() : null,
               $lte: toDate ? toDate.toISOString() : new Date().toISOString(),
             },
           },
@@ -105,9 +105,9 @@ export function latest({
     .search({
       selector: {
         $and: [
-          { start: { $gte: fromDate ? fromDate.toISOString() : null } },
           {
             start: {
+              $gte: fromDate ? fromDate.toISOString() : null,
               $lte: toDate ? toDate.toISOString() : new Date().toISOString(),
             },
           },
