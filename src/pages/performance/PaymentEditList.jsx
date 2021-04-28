@@ -22,7 +22,6 @@ export default function PaymentEditList({
 
   useEffect(() => {
     if (_payments.length > payments.length) {
-      console.log("Add from outside");
       // A payment is added from outside
       setPayments(_payments);
     }
