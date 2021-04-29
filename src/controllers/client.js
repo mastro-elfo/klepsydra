@@ -56,7 +56,6 @@ export function search(query) {
       .join("|"),
     "i"
   );
-  console.log(re);
   return new Client()
     .search({
       selector: {
