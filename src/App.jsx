@@ -17,6 +17,7 @@ import { route as performance } from "./pages/performance";
 import { route as settings } from "./pages/settings";
 import { route as tracker } from "./pages/tracker";
 // Aside
+import AppLoader from "./AppLoader";
 import Intro from "./pages/intro";
 
 // Import contextes
@@ -40,11 +41,6 @@ export default function App() {
       init();
     }
   }, [initialized]);
-
-  if (!initialized) {
-    // TODO: Loading page
-    return null;
-  }
 
   return (
     <AppContainer
@@ -70,6 +66,7 @@ export default function App() {
       }}
       WrapperProps={{
         Children: [
+          { Component: AppLoader, loading: !initialized },
           { Component: SettingsProvider },
           { Component: Intro },
           {
