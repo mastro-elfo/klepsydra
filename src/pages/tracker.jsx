@@ -28,7 +28,7 @@ function Component() {
 
   useEffect(() => {
     // Initialize tracker
-    setTracker(fromObject(tracker, state));
+    setTracker(fromObject(tracker, { price: settings.price }, state));
     // eslint-disable-next-line
   }, []);
 
