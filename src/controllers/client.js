@@ -12,8 +12,8 @@ export const defaultValue = {
   telephone: "",
 };
 
-export function fromObject(data) {
-  return merge(defaultValue, data);
+export function fromObject(...data) {
+  return merge(defaultValue, ...data);
 }
 
 const fields = [

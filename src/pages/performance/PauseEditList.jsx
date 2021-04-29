@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 
 import PauseEdit from "./PauseEdit";
-import { create } from "../../controllers/pause";
+import { fromObject as pauseFromObject } from "../../controllers/pause";
 
 import AddIcon from "@material-ui/icons/Add";
 
@@ -22,7 +22,7 @@ export default function PauseEditList({ pauses: _pauses, onChange }) {
     // eslint-disable-next-line
   }, [pauses]);
 
-  const handleAddPause = () => setPauses([create(), ...pauses]);
+  const handleAddPause = () => setPauses([pauseFromObject(), ...pauses]);
 
   const handleChange = (index) => (pause) => {
     const _pauses = pauses.slice();

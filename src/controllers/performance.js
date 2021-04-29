@@ -16,8 +16,8 @@ export const defaultValue = {
   // status: null,
 };
 
-export function fromObject(data) {
-  return merge(defaultValue, data);
+export function fromObject(...data) {
+  return merge(defaultValue, ...data);
 }
 
 const fields = [

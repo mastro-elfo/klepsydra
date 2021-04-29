@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 
 import PaymentEdit from "./PaymentEdit";
-import { create } from "../../controllers/payment";
+import { fromObject as paymentFromObject } from "../../controllers/payment";
 
 import AddIcon from "@material-ui/icons/Add";
 
@@ -35,7 +35,7 @@ export default function PaymentEditList({
   }, [payments]);
 
   const handleAddPayment = () =>
-    setPayments([create({ value: due }), ...payments]);
+    setPayments([paymentFromObject({ value: due }), ...payments]);
 
   const handleChange = (index) => (payment) => {
     const _payments = payments.slice();

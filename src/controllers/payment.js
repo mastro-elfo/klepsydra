@@ -1,9 +1,19 @@
-export function create(props) {
+import { merge } from "./utils";
+
+const defaultValue = {
+  id: null,
+  date: null,
+  value: 0,
+};
+
+export function fromObject(...data) {
   const date = new Date();
-  return {
-    id: date,
-    date,
-    value: 0,
-    ...props,
-  };
+  return merge(
+    defaultValue,
+    {
+      id: date,
+      date,
+    },
+    ...data
+  );
 }

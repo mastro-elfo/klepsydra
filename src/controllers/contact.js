@@ -6,6 +6,6 @@ export const defaultValue = {
   value: "",
 };
 
-export function fromObject(data) {
-  return merge(defaultValue, { id: +new Date() }, data);
+export function fromObject(...data) {
+  return merge(defaultValue, { id: +new Date() }, ...data);
 }
