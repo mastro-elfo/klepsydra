@@ -67,7 +67,11 @@ export default function PrintTable({ list }) {
               <TableHeadCell>Tot. {settings.currency}</TableHeadCell>
             </TableRow>
           </TableHead>
-          <TableFooter>
+          <TableFooter></TableFooter>
+          <TableBody>
+            {list.map(({ _id, ...rest }) => (
+              <PrintTableRow key={_id} {...rest} />
+            ))}
             <TableRow>
               <Borderless colSpan={3}>
                 <Typography variant="button" display="block" align="right">
@@ -80,22 +84,29 @@ export default function PrintTable({ list }) {
             </TableRow>
             <TableRow>
               <TableCell colSpan={5}>
-                <Typography variant="button" display="block" align="right">
+                <Typography
+                  variant="button"
+                  display="block"
+                  align="right"
+                  color={payed ? "default" : "secondary"}
+                >
                   {payed ? "Pagato" : "Da Pagare"}
                 </Typography>
               </TableCell>
               <TableCell>
-                {payed ? <CheckIcon color="secondary" /> : due.toFixed(2)}
+                {payed ? (
+                  <CheckIcon color="secondary" />
+                ) : (
+                  <Typography color="secondary" variant="body2">
+                    {due.toFixed(2)}
+                  </Typography>
+                )}
               </TableCell>
             </TableRow>
-          </TableFooter>
-          <TableBody>
-            {list.map(({ _id, ...rest }) => (
-              <PrintTableRow key={_id} {...rest} />
-            ))}
           </TableBody>
         </Table>
       </TableContainer>
+      {!!printAfter && <Typography variant="body2" gutterBottom></Typography>}
       {!!printAfter &&
         printAfter.split("\n").map((p, i) => (
           <Typography key={i} variant="body2">
@@ -148,12 +159,23 @@ function PrintTableRow({
           </Typography>
         </TableCell>
         <TableCell colSpan={2}>
-          <Typography variant="button" display="block" align="right">
+          <Typography
+            variant="button"
+            display="block"
+            align="right"
+            color={payed ? "default" : "secondary"}
+          >
             {payed ? "Pagato" : "Da Pagare"}
           </Typography>
         </TableCell>
         <TableCell>
-          {payed ? <CheckIcon color="secondary" /> : due.toFixed(2)}
+          {payed ? (
+            <CheckIcon color="secondary" />
+          ) : (
+            <Typography color={payed ? "default" : "secondary"} variant="body2">
+              {due.toFixed(2)}
+            </Typography>
+          )}
         </TableCell>
       </TableRow>
     </Fragment>
