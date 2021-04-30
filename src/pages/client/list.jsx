@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import { useTranslation } from "react-i18next";
 
 import { IconButton, List, ListItem, ListItemText } from "@material-ui/core";
 
@@ -22,6 +23,7 @@ function Component() {
   const { enqueueSnackbar } = useSnackbar();
   const [list, setList] = useState([]);
   const [didSearch, setDidSearch] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!didSearch) {
@@ -65,7 +67,7 @@ function Component() {
             <HeaderSearchField
               key="search"
               fullWidth
-              placeholder="Cerca studenti"
+              placeholder={t("Client.Search")}
               onSearch={handleSearch}
               onClear={handleClear}
             />,

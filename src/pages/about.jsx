@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import {
   List,
@@ -24,6 +25,7 @@ import { version } from "../version.json";
 function Component() {
   useTitle("Informazioni");
   const [licenseDialog, setLicenseDialog] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <Page
@@ -33,18 +35,18 @@ function Component() {
         <Content>
           <List>
             <ListItem>
-              <ListItemText primary={version} secondary="Versione" />
+              <ListItemText primary={version} secondary={t("Version")} />
             </ListItem>
             <ListItem>
               <ListItemText
                 primary="Francesco Michienzi"
-                secondary="Sviluppo Software"
+                secondary={t("Software Development")}
               />
             </ListItem>
             <ListItem button onClick={() => setLicenseDialog(true)}>
               <ListItemText
                 primary="Copyright (c) 2021 mastro-elfo"
-                secondary="Licenza MIT"
+                secondary={t("MIT License")}
               />
             </ListItem>
           </List>
@@ -82,8 +84,8 @@ export const route = {
 
 export const drawer = {
   key: "about",
-  primary: "Informazioni",
+  primary: "About.Key",
   secondary: `v${version}`,
   icon: <DrawerIcon />,
-  title: "Open About",
+  title: "$t(Open) $t(About.Key)",
 };

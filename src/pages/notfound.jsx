@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import {
   IconButton,
   List,
@@ -7,12 +9,15 @@ import {
   Typography,
 } from "@material-ui/core";
 import { Content, Header, Page, Push } from "mastro-elfo-mui";
-import DashboardIcon from "@material-ui/icons/Dashboard";
 
 import { useTitle } from "./utils";
 
+import DashboardIcon from "@material-ui/icons/Dashboard";
+
 function Component() {
-  useTitle("404 Non trovato");
+  const { t } = useTranslation();
+
+  useTitle(`404 ${t("Page Not Found")}`);
   return (
     <Page
       TopFabProps={{ color: "secondary", size: "small" }}
@@ -26,7 +31,7 @@ function Component() {
             </Push>
           }
         >
-          Pagina non trovata
+          t("Page Not Found")
         </Header>
       }
       content={

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { Button, MobileStepper, Paper, Typography } from "@material-ui/core";
+// import { useTranslation } from "react-i18next";
+
 import { styled } from "@material-ui/core/styles";
+import { Button, MobileStepper, Paper, Typography } from "@material-ui/core";
 import { Content } from "mastro-elfo-mui";
 import { useSettings } from "./settings/context";
 
@@ -15,6 +17,7 @@ export default function Intro({ children }) {
   const [step, setStep] = useState(0);
   const [settings, setSettings] = useSettings();
   const { intro } = settings;
+  // const { t } = useTranslation();
 
   useEffect(() => {
     setStep(0);

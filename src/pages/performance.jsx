@@ -27,8 +27,8 @@ export const route = {
 
 export const drawer = {
   key: "performance",
-  primary: "Prestazioni",
+  primary: "Performance.Key_plural",
   secondary: "",
   icon: <DrawerIcon />,
-  title: "Open Performance",
+  title: "$t(Open) $t(Performance.Key_plural)",
 };

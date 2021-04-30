@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSnackbar } from "notistack";
+import { useTranslation } from "react-i18next";
 import {
   Box,
   Checkbox,
@@ -43,6 +44,7 @@ function Component() {
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
   const [notPayed, setNotPayed] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!searchQuery) {
@@ -137,7 +139,7 @@ function Component() {
             <HeaderSearchField
               key="search"
               fullWidth
-              placeholder="Cerca prestazioni"
+              placeholder={t("Performance.Search")}
               onSearch={handleSearch}
               onClear={handleClear}
             />,

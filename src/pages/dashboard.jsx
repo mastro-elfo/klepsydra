@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSnackbar } from "notistack";
-
+import { useTranslation } from "react-i18next";
 import { IconButton } from "@material-ui/core";
 
 import {
@@ -42,6 +42,7 @@ function Component() {
   const [clientList, setClientList] = useState();
   const [performanceList, setPerformanceList] = useState();
   const [didSearch, setDidSearch] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!didSearch) {
@@ -59,10 +60,10 @@ function Component() {
     // eslint-disable-next-line
   }, [didSearch]);
 
-  const statusLabel = useMemo(
-    () => ({ started: "Avviato", paused: "In Pausa" }[status] || ""),
-    [status]
-  );
+  // const statusLabel = useMemo(
+  //   () => ({ started: "Avviato", paused: "In Pausa" }[status] || ""),
+  //   [status]
+  // );
 
   const statusIcon = useMemo(
     () =>
@@ -106,18 +107,40 @@ function Component() {
                       {
                         onClick: () => push("/tracker"),
                         ...tracker,
-                        secondary: statusLabel,
+                        primary: t(tracker.primary),
+                        title: t(tracker.title),
+                        secondary: t(`Tracker.Status.${status}`),
                         icon: statusIcon,
                       },
-                      { onClick: () => push("/client"), ...client },
-                      { onClick: () => push("/performance"), ...performance },
+                      {
+                        onClick: () => push("/client"),
+                        ...client,
+                        primary: t(client.primary),
+                        title: t(client.title),
+                      },
+                      {
+                        onClick: () => push("/performance"),
+                        ...performance,
+                        primary: t(performance.primary),
+                        title: t(performance.title),
+                      },
                     ],
                   },
                   {
                     key: "app",
                     items: [
-                      { onClick: () => push("/about"), ...about },
-                      { onClick: () => push("/settings"), ...settings },
+                      {
+                        onClick: () => push("/about"),
+                        ...about,
+                        primary: t(about.primary),
+                        title: t(about.title),
+                      },
+                      {
+                        onClick: () => push("/settings"),
+                        ...settings,
+                        primary: t(settings.primary),
+                        title: t(settings.title),
+                      },
                     ],
                   },
                 ]}
@@ -126,7 +149,7 @@ function Component() {
             <HeaderSearchField
               key="search"
               fullWidth
-              placeholder="Cerca"
+              placeholder={t("Search")}
               onSearch={handleSearch}
               onClear={handleClear}
             />,
@@ -141,7 +164,9 @@ function Component() {
       content={
         <Content>
           <ResultList
-            title="Studenti"
+            title={t("Client.Key", {
+              count: clientList ? clientList.length : 0,
+            })}
             Icon={ClientIcon}
             list={
               !!clientList &&
@@ -156,7 +181,9 @@ function Component() {
             }
           />
           <ResultList
-            title="Prestazioni"
+            title={t("Performance.Key", {
+              count: performanceList ? performanceList.length : 0,
+            })}
             Icon={PerformanceIcon}
             list={
               !!performanceList &&

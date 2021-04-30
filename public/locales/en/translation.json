@@ -1,0 +1,32 @@
+{
+  "MIT License": "MIT License",
+  "Open": "Open",
+  "Page Not Found": "Page Not Found",
+  "Search": "Search",
+  "Software Development": "Software Development",
+  "Version": "Version",
+  "About": {
+    "Key": "About"
+  },
+  "Client": {
+    "Key": "Student",
+    "Key_plural": "Students",
+    "Search": "Search Students"
+  },
+  "Performance": {
+    "Key": "Performance",
+    "Key_plural": "Performances",
+    "Search": "Search Performance"
+  },
+  "Settings": {
+    "Key": "Settings"
+  },
+  "Tracker": {
+    "Key": "Tracker",
+    "Status": {
+      "undefined": "",
+      "paused": "Paused",
+      "started": "Started"
+    }
+  }
+}

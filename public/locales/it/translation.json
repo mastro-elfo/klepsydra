@@ -1,0 +1,32 @@
+{
+  "MIT License": "Licenza MIT",
+  "Open": "Apri",
+  "Page Not Found": "Pagina non trovata",
+  "Search": "Cerca",
+  "Software Development": "Sviluppo Software",
+  "Version": "Versione",
+  "About": {
+    "Key": "Informazioni"
+  },
+  "Client": {
+    "Key": "Studente",
+    "Key_plural": "Studenti",
+    "Search": "Cerca Studenti"
+  },
+  "Performance": {
+    "Key": "Prestazione",
+    "Key_plural": "Prestazioni",
+    "Search": "Cerca Prestazioni"
+  },
+  "Settings": {
+    "Key": "Impostazioni"
+  },
+  "Tracker": {
+    "Key": "Cronometro",
+    "Status": {
+      "undefined": "",
+      "paused": "In Pausa",
+      "started": "Avviato"
+    }
+  }
+}

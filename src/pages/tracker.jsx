@@ -125,8 +125,8 @@ export const route = {
 
 export const drawer = {
   key: "tracker",
-  primary: "Cronometro",
+  primary: "Tracker.Key",
   secondary: "",
   icon: <DrawerIcon />,
-  title: "Open Tracker",
+  title: "$t(Open) $t(Tracker.Key)",
 };

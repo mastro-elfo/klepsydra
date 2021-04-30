@@ -1,4 +1,6 @@
 // import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+
 import {
   Checkbox,
   InputAdornment,
@@ -20,6 +22,7 @@ import { useSettings } from "./settings/context";
 function Component() {
   useTitle("Impostazioni");
   const [settings, setSettings] = useSettings();
+  const { t } = useTranslation();
 
   const handleChange = (field, cast = (v) => v) => ({ target: { value } }) =>
     setSettings({ ...settings, [field]: cast(value) });
@@ -37,7 +40,9 @@ function Component() {
   return (
     <Page
       TopFabProps={{ color: "secondary", size: "small" }}
-      header={<Header LeftAction={<BackIconButton />}>Impostazioni</Header>}
+      header={
+        <Header LeftAction={<BackIconButton />}>{t("Settings.Key")}</Header>
+      }
       content={
         <Content>
           <List subheader={<ListSubheader>Generale</ListSubheader>}>
@@ -185,8 +190,8 @@ export const route = {
 
 export const drawer = {
   key: "settings",
-  primary: "Impostazioni",
+  primary: "Settings.Key",
   secondary: "",
   icon: <DrawerIcon />,
-  title: "Open Settings",
+  title: "$t(Open) $t(Settings.Key)",
 };
