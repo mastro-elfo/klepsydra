@@ -13,6 +13,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "date-fns": "^2.20.1",
+    "gh-pages": "^3.1.0",
     "lodash": "^4.17.21",
     "mastro-elfo-mui": "^2.14.1",
     "me-sortable": "^1.0.1",
@@ -34,7 +35,9 @@
     "prebuild": "yarn run version && yarn run test --all --watchAll=false",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "echo \"react-scripts eject (echoed)\""
+    "eject": "echo \"react-scripts eject (echoed)\"",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
