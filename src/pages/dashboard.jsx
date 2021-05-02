@@ -60,11 +60,6 @@ function Component() {
     // eslint-disable-next-line
   }, [didSearch]);
 
-  // const statusLabel = useMemo(
-  //   () => ({ started: "Avviato", paused: "In Pausa" }[status] || ""),
-  //   [status]
-  // );
-
   const statusIcon = useMemo(
     () =>
       !!status ? <TrackerActiveIcon color="secondary" /> : <TrackerIcon />,

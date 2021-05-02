@@ -45,17 +45,18 @@ function Component() {
       }
       content={
         <Content>
-          <List subheader={<ListSubheader>Generale</ListSubheader>}>
+          <List
+            subheader={<ListSubheader>{t("Settings.General")}</ListSubheader>}
+          >
             <ListItem>
               <ListItemHelp>
                 <Typography variant="body2">
-                  Questa è la tua tariffa base, puoi selezionare tariffe diverse
-                  per ogni cliente e per ogni prestazione
+                  {t("Settings.Price.Tooltip")}
                 </Typography>
               </ListItemHelp>
               <TextField
                 fullWidth
-                label="Tariffa"
+                label={t("Settings.Price.Key")}
                 value={parseFloat(price || 0).toFixed(2)}
                 onChange={handleChange("price", parseFloat)}
                 InputProps={{
@@ -71,13 +72,12 @@ function Component() {
             <ListItem>
               <ListItemHelp>
                 <Typography variant="body2">
-                  Applica automaticamente uno sconto per arrotondare al valore
-                  più vicino
+                  {t("Settings.Rounding.Tooltip")}
                 </Typography>
               </ListItemHelp>
               <TextField
                 fullWidth
-                label="Arrotondamento"
+                label={t("Settings.Rounding.Key")}
                 onChange={handleChange("discountRound", parseFloat)}
                 value={parseFloat(discountRound || 0).toFixed(2)}
                 disabled={!enableDiscountRound}
@@ -103,28 +103,30 @@ function Component() {
             <ListItem>
               <ListItemHelp>
                 <Typography variant="body2">
-                  Imposta il simbolo della valuta
+                  {t("Settings.Currency.Tooltip")}
                 </Typography>
               </ListItemHelp>
               <TextField
                 fullWidth
-                label="Valuta"
+                label={t("Settings.Currency.Key")}
                 onChange={handleChange("currency")}
                 value={currency}
               />
             </ListItem>
           </List>
 
-          <List subheader={<ListSubheader>Stampa</ListSubheader>}>
+          <List
+            subheader={<ListSubheader>{t("Settings.Print")}</ListSubheader>}
+          >
             <ListItem>
               <ListItemHelp>
                 <Typography variant="body2">
-                  Titolo della pagina di stampa
+                  {t("Settings.PrintTitle.Tooltip")}
                 </Typography>
               </ListItemHelp>
               <TextField
                 fullWidth
-                label="Titolo"
+                label={t("Settings.PrintTitle.Key")}
                 onChange={handleChange("printTitle")}
                 value={printTitle}
               />
@@ -132,12 +134,12 @@ function Component() {
             <ListItem>
               <ListItemHelp>
                 <Typography variant="body2">
-                  Testo prima della tabella, può contenere più righe
+                  {t("Settings.PrintBefore.Tooltip")}
                 </Typography>
               </ListItemHelp>
               <TextField
                 fullWidth
-                label="Prima"
+                label={t("Settings.PrintBefore.Key")}
                 onChange={handleChange("printBefore")}
                 value={printBefore}
                 multiline
@@ -148,12 +150,12 @@ function Component() {
             <ListItem>
               <ListItemHelp>
                 <Typography variant="body2">
-                  Testo dopo la tabella, può contenere più righe
+                  {t("Settings.PrintAfter.Tooltip")}
                 </Typography>
               </ListItemHelp>
               <TextField
                 fullWidth
-                label="Dopo"
+                label={t("Settings.PrintAfter.Key")}
                 onChange={handleChange("printAfter")}
                 value={printAfter}
                 multiline
@@ -163,17 +165,21 @@ function Component() {
             </ListItem>
           </List>
 
-          <List subheader={<ListSubheader>Introduzione</ListSubheader>}>
+          <List
+            subheader={
+              <ListSubheader>{t("Settings.Introduction")}</ListSubheader>
+            }
+          >
             <ListItem
               button
               onClick={() => setSettings({ ...settings, intro: true })}
             >
               <ListItemHelp>
                 <Typography variant="body2">
-                  Clicca per rivedere l'introduzione iniziale
+                  {t("Settings.Intro.Click to watch again")}
                 </Typography>
               </ListItemHelp>
-              <ListItemText primary="Rivedi Introduzione" />
+              <ListItemText primary={t("Settings.Intro.Watch Again")} />
             </ListItem>
           </List>
         </Content>

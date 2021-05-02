@@ -31,14 +31,12 @@ function Component() {
             </Push>
           }
         >
-          t("Page Not Found")
+          {t("Page Not Found")}
         </Header>
       }
       content={
         <Content>
-          <Typography paragraph>
-            Non è possibile aprire la pagina che stavi cercando.
-          </Typography>
+          <Typography paragraph>{t("NotFound.Content")}</Typography>
           <List>
             <Push href="/" replace>
               <ListItem button>
@@ -47,7 +45,7 @@ function Component() {
                 </ListItemIcon>
                 <ListItemText
                   primary="Dashboard"
-                  secondary="Torna alla pagina principale"
+                  secondary={t("NotFound.Back to Dashboard")}
                 />
               </ListItem>
             </Push>

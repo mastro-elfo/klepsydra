@@ -13,13 +13,48 @@
     "Key_plural": "Studenti",
     "Search": "Cerca Studenti"
   },
+  "NotFound": {
+    "Content": "Non è possibile aprire la pagina che stavi cercando.",
+    "Back to Dashboard": "Torna alla pagina principale"
+  },
   "Performance": {
     "Key": "Prestazione",
     "Key_plural": "Prestazioni",
     "Search": "Cerca Prestazioni"
   },
   "Settings": {
-    "Key": "Impostazioni"
+    "Key": "Impostazioni",
+    "General": "Generale",
+    "Print": "Stampa",
+    "Introduction": "Introduzione",
+    "Price": {
+      "Key": "Tariffa",
+      "Tooltip": "Questa è la tua tariffa base, puoi selezionare tariffe diverse per ogni cliente e per ogni prestazione"
+    },
+    "Rounding": {
+      "Key": "Arrotondamento",
+      "Tooltip": "Applica automaticamente uno sconto per arrotondare al valore più vicino"
+    },
+    "Currency": {
+      "Key": "Valuta",
+      "Tooltip": "Imposta il simbolo della valuta"
+    },
+    "PrintTitle": {
+      "Key": "Titolo",
+      "Tooltip": "Titolo della pagina di stampa"
+    },
+    "PrintBefore": {
+      "Key": "Prima",
+      "Tooltip": "Testo prima della tabella, può contenere più righe"
+    },
+    "PrintAfter": {
+      "Key": "Dopo",
+      "Tooltip": "Testo dopo la tabella, può contenere più righe"
+    },
+    "Intro": {
+      "Click to watch again": "Clicca per rivedere l'introduzione iniziale",
+      "Watch Again": "Rivedi Introduzione"
+    }
   },
   "Tracker": {
     "Key": "Cronometro",

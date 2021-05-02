@@ -13,13 +13,48 @@
     "Key_plural": "Students",
     "Search": "Search Students"
   },
+  "NotFound": {
+    "Content": "It is impossible to open the page you were looking for.",
+    "Back to Dashboard": "Back to Dashboard"
+  },
   "Performance": {
     "Key": "Performance",
     "Key_plural": "Performances",
     "Search": "Search Performance"
   },
   "Settings": {
-    "Key": "Settings"
+    "Key": "Settings",
+    "General": "General",
+    "Print": "Print",
+    "Introduction": "Introduction",
+    "Price": {
+      "Key": "Price",
+      "Tooltip": "This is your base price, you can set different prices for each student and for each performance"
+    },
+    "Rounding": {
+      "Key": "Rounding",
+      "Tooltip": "Automatically apply a discount to round to the nearest value"
+    },
+    "Currency": {
+      "Key": "Currency",
+      "Tooltip": "Set currency symbol"
+    },
+    "PrintTitle": {
+      "Key": "Title",
+      "Tooltip": "Print page title"
+    },
+    "PrintBefore": {
+      "Key": "Before",
+      "Tooltip": "Text before the table, may contain more rows"
+    },
+    "PrintAfter": {
+      "Key": "After",
+      "Tooltip": "Text after the table, may contain more rows"
+    },
+    "Intro": {
+      "Click to watch again": "Click to watch again the introduction",
+      "Watch Again": "Watch Again"
+    }
   },
   "Tracker": {
     "Key": "Tracker",
