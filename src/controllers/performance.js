@@ -57,7 +57,7 @@ export function destroy(id) {
 
 export function search(
   query,
-  { fromDate = null, toDate = null, notPayed = false } = {}
+  { fromDate = null, toDate = null, notPayed = false, skip = 0 } = {}
 ) {
   // const re = RegExp(`.*${query}.*`, "i");
   const re = RegExp(
@@ -88,6 +88,8 @@ export function search(
       },
       fields,
       sort: [{ start: "desc" }],
+      limit: 10,
+      skip,
     })
     .then(({ docs, warning }) => {
       if (warning) console.warn(warning);
@@ -100,6 +102,7 @@ export function latest({
   fromDate = null,
   toDate = null,
   notPayed = false,
+  skip = 0,
 } = {}) {
   return new Performance()
     .search({
@@ -118,6 +121,7 @@ export function latest({
       fields,
       sort: [{ start: "desc" }],
       limit: 10,
+      skip,
     })
     .then(({ docs, warning }) => {
       if (warning) console.warn(warning);

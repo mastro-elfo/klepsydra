@@ -23,6 +23,7 @@ import {
 } from "mastro-elfo-mui";
 
 import { KeyboardDatePicker } from "@material-ui/pickers";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 import Loader from "./Loader";
 import PerformanceListItem from "./PerformanceListItem";
@@ -44,32 +45,47 @@ function Component() {
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
   const [notPayed, setNotPayed] = useState(false);
+  const [skip, setSkip] = useState(0);
   const { t } = useTranslation();
+
+  useEffect(() => setSkip(() => 0), [searchQuery]);
 
   useEffect(() => {
     if (!searchQuery) {
       // Load latest
-      latest({ fromDate, toDate, notPayed })
-        .then((docs) => setList(docs))
+      latest({ fromDate, toDate, notPayed, skip })
+        .then((docs) => {
+          if (skip === 0) {
+            setList(docs);
+          } else {
+            setList([...list, ...docs]);
+          }
+        })
         .catch((e) => {
           console.error(e);
           enqueueSnackbar(`${e.name} ${e.message}`, { variant: "error" });
         });
     }
     // eslint-disable-next-line
-  }, [searchQuery, fromDate, toDate, notPayed]);
+  }, [searchQuery, fromDate, toDate, notPayed, skip]);
 
   useEffect(() => {
     if (searchQuery) {
-      search(searchQuery, { fromDate, toDate, notPayed })
-        .then((docs) => setList(docs))
+      search(searchQuery, { fromDate, toDate, notPayed, skip })
+        .then((docs) => {
+          if (skip === 0) {
+            setList(docs);
+          } else {
+            setList([...list, ...docs]);
+          }
+        })
         .catch((e) => {
           console.error(e);
           enqueueSnackbar(`${e.name} ${e.message}`, { variant: "error" });
         });
     }
     // eslint-disable-next-line
-  }, [searchQuery, fromDate, toDate, notPayed]);
+  }, [searchQuery, fromDate, toDate, notPayed, skip]);
 
   useEffect(() => {
     const _selected = selected
@@ -222,18 +238,25 @@ function Component() {
             </Typography>
           )}
           <List>
-            {list.map((performance) => {
-              const { _id } = performance;
-              return (
-                <Push key={_id} href={`/performance/view/${_id}`}>
-                  <PerformanceListItem
-                    performance={performance}
-                    checked={!!selected.find((item) => item._id === _id)}
-                    onToggle={handleToggle(performance)}
-                  />
-                </Push>
-              );
-            })}
+            <InfiniteScroll
+              dataLength={list.length}
+              next={() => setSkip(skip + 10)}
+              hasMore={true}
+            >
+              {" "}
+              {list.map((performance) => {
+                const { _id } = performance;
+                return (
+                  <Push key={_id} href={`/performance/view/${_id}`}>
+                    <PerformanceListItem
+                      performance={performance}
+                      checked={!!selected.find((item) => item._id === _id)}
+                      onToggle={handleToggle(performance)}
+                    />
+                  </Push>
+                );
+              })}
+            </InfiniteScroll>
           </List>
         </Content>
       }
