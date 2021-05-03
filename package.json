@@ -1,7 +1,7 @@
 {
   "name": "klepsydra",
   "homepage": "/klepsydra",
-  "version": "0.1.35",
+  "version": "0.1.36",
   "private": true,
   "dependencies": {
     "@date-io/date-fns": "1.x",
@@ -42,6 +42,7 @@
     "prebuild": "yarn run version && yarn run test --all --watchAll=false",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "posttest": "node scripts/posttest.js",
     "eject": "echo \"react-scripts eject (echoed)\"",
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d build"
