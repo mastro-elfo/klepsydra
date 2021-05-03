@@ -1,7 +1,7 @@
 {
   "name": "klepsydra",
   "homepage": "/klepsydra",
-  "version": "0.1.36",
+  "version": "0.1.37",
   "private": true,
   "dependencies": {
     "@date-io/date-fns": "1.x",

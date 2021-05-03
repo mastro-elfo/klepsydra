@@ -5,6 +5,7 @@ import { initReactI18next } from "react-i18next";
 import LocalStorageBackend from "i18next-localstorage-backend";
 import Fetch from "i18next-fetch-backend";
 import { version } from "./version.json";
+import { LocalStorageBackendOptions } from "./i18n.json";
 
 i18n
   .use(Backend)
@@ -19,9 +20,9 @@ i18n
       backendOptions: [
         {
           prefix: "i18next_res_",
-          // expirationTime: 7 * 24 * 60 * 60 * 1000,
-          expirationTime: 0,
+          expirationTime: 7 * 24 * 60 * 60 * 1000,
           defaultVersion: version,
+          ...LocalStorageBackendOptions,
         },
         {
           loadPath: "/klepsydra/locales/{{lng}}/{{ns}}.json",
