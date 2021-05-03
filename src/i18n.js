@@ -19,8 +19,8 @@ i18n
       backendOptions: [
         {
           prefix: "i18next_res_",
-          expirationTime: 7 * 24 * 60 * 60 * 1000,
-          // expirationTime: 0,
+          // expirationTime: 7 * 24 * 60 * 60 * 1000,
+          expirationTime: 0,
           defaultVersion: version,
         },
         {

@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { ListItemIcon, ListItemText } from "@material-ui/core";
 
 import { useTracker } from "./context";
@@ -8,6 +9,7 @@ import StartIcon from "@material-ui/icons/PlayArrow";
 import StopIcon from "@material-ui/icons/Stop";
 
 export default function Status() {
+  const { t } = useTranslation();
   const [tracker] = useTracker();
   const [date, setDate] = useState(new Date());
   const { start, status } = tracker || {};
@@ -25,12 +27,12 @@ export default function Status() {
     }
   }, [date, start]);
 
-  const statusLabel = useMemo(
-    () =>
-      ({ started: "Avviato", paused: "In Pausa", stopped: "Fermato" }[status] ||
-      "Non Avviato"),
-    [status]
-  );
+  // const statusLabel = useMemo(
+  //   () =>
+  //     ({ started: "Avviato", paused: "In Pausa", stopped: "Fermato" }[status] ||
+  //     "Non Avviato"),
+  //   [status]
+  // );
 
   const statusIcon = useMemo(
     () =>
@@ -45,14 +47,17 @@ export default function Status() {
   return (
     <Fragment>
       <ListItemIcon>{statusIcon}</ListItemIcon>
-      <ListItemText primary={statusLabel} secondary="Stato" />
+      <ListItemText
+        primary={t(`Tracker.Status.${status || "stopped"}`)}
+        secondary={t("Status")}
+      />
       <ListItemText
         primary={new Date(date).toLocaleDateString()}
-        secondary="Data"
+        secondary={t("Date")}
       />
       <ListItemText
         primary={new Date(date).toLocaleTimeString()}
-        secondary="Ora"
+        secondary={t("Time")}
       />
     </Fragment>
   );

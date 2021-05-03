@@ -1,6 +1,7 @@
 import { Fragment, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import { useTranslation } from "react-i18next";
 import {
   Button,
   Dialog,
@@ -22,6 +23,7 @@ import StopIcon from "@material-ui/icons/Stop";
 export default function StopDialogButton() {
   const { replace } = useHistory();
   const { enqueueSnackbar } = useSnackbar();
+  const { t } = useTranslation();
   const [settings] = useSettings();
   const [open, setOpen] = useState(false);
   const [tracker, setTracker] = useTracker();
@@ -32,12 +34,14 @@ export default function StopDialogButton() {
     // Check if a client is selected
     if (!client) {
       setOpen(false);
-      return enqueueSnackbar("Seleziona uno studente", { variant: "warning" });
+      return enqueueSnackbar(t("Tracker.Snackbar.ClientNotSelected"), {
+        variant: "warning",
+      });
     }
     // Check if price is a valid non negative number
     if (isNaN(price) || price < 0) {
       setOpen(false);
-      return enqueueSnackbar("La tariffa inserita non è valida", {
+      return enqueueSnackbar(t("Tracker.Snackbar.PriceNotValid"), {
         variant: "warning",
       });
     }
@@ -53,15 +57,15 @@ export default function StopDialogButton() {
         : 0,
     };
     setTracker(final);
-    enqueueSnackbar("Cronometro interrotto", { variant: "info" });
+    enqueueSnackbar(t("Tracker.Snackbar.Stopped"), { variant: "info" });
     create(fromObject(final))
       .then(({ id }) => {
-        enqueueSnackbar("Prestazione salvata", { variant: "success" });
+        enqueueSnackbar(t("Tracker.Snackbar.Saved"), { variant: "success" });
         setTimeout(replace, 500, `/performance/view/${id}`);
         setTracker();
       })
       .catch((e) => {
-        enqueueSnackbar("Errore salvataggio", { variant: "error" });
+        enqueueSnackbar(t("Error.Save"), { variant: "error" });
       });
   };
 
@@ -74,7 +78,7 @@ export default function StopDialogButton() {
       start: null,
       status: null,
     });
-    enqueueSnackbar("Prestazione eliminata", { variant: "success" });
+    enqueueSnackbar(t("Tracker.Snackbar.Discarded"), { variant: "success" });
     setOpen(false);
   };
 
@@ -89,26 +93,26 @@ export default function StopDialogButton() {
         <StopIcon />
       </IconButton>
       <Dialog open={open} onClose={() => setOpen(false)}>
-        <DialogTitle>Ferma il timer</DialogTitle>
+        <DialogTitle>{t("Tracker.Stop the tracker")}</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Puoi fermare il timer e creare una nuova prestazione
+            {t("Tracker.Stop the tracker and save the performance")}
           </DialogContentText>
           <DialogContentText>
-            Puoi eliminare il timer corrente
+            {t("Tracker.Discard current tracker")}
           </DialogContentText>
           <DialogContentText>
-            Clicca su annulla per non applicare modifiche
+            {t("Tracker.Cancel to not modify anything")}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button color="primary" variant="contained" onClick={handleSave}>
-            Salva
+            {t("Save")}
           </Button>
           <DangerButton variant="contained" onClick={handleDiscard}>
-            Elimina
+            {t("Delete")}
           </DangerButton>
-          <Button onClick={() => setOpen(false)}>Annulla</Button>
+          <Button onClick={() => setOpen(false)}>{t("Cancel")}</Button>
         </DialogActions>
       </Dialog>
     </Fragment>

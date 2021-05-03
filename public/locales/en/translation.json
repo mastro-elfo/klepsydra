@@ -1,9 +1,21 @@
 {
+  "Cancel": "Cancel",
+  "Date": "Date",
+  "Delete": "Discard",
+  "Error": {
+    "Generic": "Generic error",
+    "Save": "Saving error"
+  },
   "MIT License": "MIT License",
   "Open": "Open",
   "Page Not Found": "Page Not Found",
+  "Pause": "Pause",
+  "Pause_plural": "Pauses",
+  "Save": "Save",
   "Search": "Search",
   "Software Development": "Software Development",
+  "Status": "Status",
+  "Time": "Time",
   "Version": "Version",
   "About": {
     "Key": "About"
@@ -58,10 +70,24 @@
   },
   "Tracker": {
     "Key": "Tracker",
+    "Stop the tracker": "Stop the tracker",
+    "Stop the tracker and save the performance": "Stop the tracker and save the performance",
+    "Discard current tracker": "Discard current tracker",
+    "Cancel to not modify anything": "Cancel to not modify anything",
     "Status": {
       "undefined": "",
       "paused": "Paused",
-      "started": "Started"
+      "started": "Started",
+      "stopped": "Stopped"
+    },
+    "Snackbar": {
+      "Started": "Tracker Started",
+      "Paused": "Tracker in Pause",
+      "Stopped": "Tracker stopped",
+      "Saved": "$t(Performance.Key) saved",
+      "Discarded": "$t(Performance.Key) discarded",
+      "ClientNotSelected": "Select a $t(Client.Key)",
+      "PriceNotValid": "Price is not valid"
     }
   }
 }

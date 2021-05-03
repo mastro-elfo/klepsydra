@@ -2,6 +2,7 @@ import { Fragment, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { debounce } from "lodash";
+import { useTranslation } from "react-i18next";
 
 import { IconButton, TextField } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
@@ -14,6 +15,7 @@ import AddIcon from "@material-ui/icons/Add";
 export default function Client() {
   const { push } = useHistory();
   const { enqueueSnackbar } = useSnackbar();
+  const { t } = useTranslation();
   const [tracker, setTracker] = useTracker();
 
   const { client } = tracker || {};
@@ -57,7 +59,7 @@ export default function Client() {
       onChange={handleChange}
       renderInput={(props) => (
         <TextField
-          label="Studente"
+          label={t("Client.Key")}
           fullWidth
           onChange={handleSearch}
           {...props}

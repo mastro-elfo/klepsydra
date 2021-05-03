@@ -1,4 +1,5 @@
 import { useSnackbar } from "notistack";
+import { useTranslation } from "react-i18next";
 
 import { IconButton } from "@material-ui/core";
 
@@ -12,6 +13,7 @@ import PauseIcon from "@material-ui/icons/Pause";
 
 export default function Controllers() {
   const { enqueueSnackbar } = useSnackbar();
+  const { t } = useTranslation();
   const [tracker, setTracker] = useTracker();
   const { pause, pauses, status } = tracker || {};
 
@@ -22,7 +24,7 @@ export default function Controllers() {
       start: new Date(),
       pauses: [],
     });
-    enqueueSnackbar("Cronometro avviato", { variant: "info" });
+    enqueueSnackbar(t("Tracker.Snackbar.Started"), { variant: "info" });
   };
 
   const handlePause = () => {
@@ -31,7 +33,7 @@ export default function Controllers() {
       status: "paused",
       pause: pauseFromObject(),
     });
-    enqueueSnackbar("Cronometro in pausa", { variant: "info" });
+    enqueueSnackbar(t("Tracker.Snackbar.Paused"), { variant: "info" });
   };
 
   const handleResume = () => {
@@ -42,7 +44,7 @@ export default function Controllers() {
       pauses: [{ ...pause, end }, ...(pauses || [])],
       pause: null,
     });
-    enqueueSnackbar("Cronometro avviato", { variant: "info" });
+    enqueueSnackbar(t("Tracker.Snackbar.Started"), { variant: "info" });
   };
 
   return [

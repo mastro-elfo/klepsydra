@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { useTracker } from "./context";
 import { List, ListItem, ListSubheader } from "@material-ui/core";
 
@@ -5,6 +7,7 @@ import Pause from "./Pause";
 import PauseItem from "./PauseItem";
 
 export default function Pauses() {
+  const { t } = useTranslation();
   const [tracker] = useTracker();
 
   const { pauses, status } = tracker || { pauses: [] };
@@ -15,7 +18,7 @@ export default function Pauses() {
     <List
       subheader={
         (hasPauses || status === "paused") && (
-          <ListSubheader>Pause</ListSubheader>
+          <ListSubheader>{t("Pause")}</ListSubheader>
         )
       }
     >
