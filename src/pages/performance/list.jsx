@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSnackbar } from "notistack";
 import { useTranslation } from "react-i18next";
 import {
@@ -26,18 +26,21 @@ import { KeyboardDatePicker } from "@material-ui/pickers";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import Loader from "./Loader";
+import PayDialogButton from "./PayDialogButton";
 import PerformanceListItem from "./PerformanceListItem";
 import PrintTable from "./PrintTable";
-import { latest, search } from "../../controllers/performance";
+import { useSettings } from "../settings/context";
+import { derived, latest, search } from "../../controllers/performance";
 
 import AddIcon from "@material-ui/icons/Add";
 import BlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import CheckIcon from "@material-ui/icons/CheckBox";
-import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
+// import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
 import PrintIcon from "@material-ui/icons/Print";
 
 function Component() {
   const { enqueueSnackbar } = useSnackbar();
+  const [settings] = useSettings();
   const [list, setList] = useState();
   const [selected, setSelected] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -106,12 +109,18 @@ function Component() {
     }
   }, [print]);
 
+  const total = useMemo(
+    () =>
+      selected.map((item) => derived(item)).reduce((a, { due }) => a + due, 0),
+    [selected]
+  );
+
   if (!list) {
     return <Loader />;
   }
 
   const handleToggle = (performance) => () => {
-    const index = selected.indexOf(performance);
+    const index = selected.findIndex((item) => item._id === performance._id);
     if (index === -1) {
       setSelected([...selected, performance]);
     } else {
@@ -145,6 +154,16 @@ function Component() {
     setPrint(true);
   };
 
+  const handleUpdate = () => {
+    const _list = list.map((item) => {
+      if (!!selected.find((itm) => itm._id === item._id)) {
+        return { ...item, payed: true };
+      }
+      return item;
+    });
+    setList(_list);
+  };
+
   return (
     <Page
       TopFabProps={{ color: "secondary", size: "small" }}
@@ -166,9 +185,11 @@ function Component() {
                 <AddIcon />
               </IconButton>
             </Push>,
-            <IconButton key="pay" disabled={selected.length === 0}>
-              <MonetizationOnIcon />
-            </IconButton>,
+            <PayDialogButton
+              key="pay"
+              selected={selected}
+              onUpdate={handleUpdate}
+            />,
             <IconButton
               key="print"
               disabled={selected.length === 0}
@@ -186,7 +207,12 @@ function Component() {
               disabled={list.length === 0}
             />,
           ]}
-        ></Header>
+        >
+          <Box ml={1}>
+            Totale: {total.toFixed(2)}
+            {settings.currency}
+          </Box>
+        </Header>
       }
       content={
         <Content>

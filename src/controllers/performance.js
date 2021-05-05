@@ -1,4 +1,5 @@
 import { merge } from "./utils";
+import { timeDiff } from "../pages/tracker/utils";
 import Performance from "../db/performance";
 
 export const defaultValue = {
@@ -18,6 +19,16 @@ export const defaultValue = {
 
 export function fromObject(...data) {
   return merge(defaultValue, ...data);
+}
+
+export function derived(performance) {
+  const { discount, end, pauses, payments, price, start } = performance;
+  const length = timeDiff(start, end, pauses);
+  const cost = (length / 1000 / 3600) * price;
+  const total = cost - discount;
+  const balance = (payments || []).reduce((acc, { value }) => acc + value, 0);
+  const due = total - balance;
+  return { balance, cost, due, length, total };
 }
 
 const fields = [
