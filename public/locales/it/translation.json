@@ -2,10 +2,12 @@
   "Cancel": "Annulla",
   "Date": "Data",
   "Delete": "Elimina",
+  "Email": "Email",
   "Error": {
     "Generic": "Errore generico",
     "Save": "Errore nel salvataggio"
   },
+  "Link": "Link",
   "MIT License": "Licenza MIT",
   "Open": "Apri",
   "Page Not Found": "Pagina non trovata",
@@ -15,7 +17,9 @@
   "Search": "Cerca",
   "Software Development": "Sviluppo Software",
   "Status": "Stato",
+  "Telephone": "Telefono",
   "Time": "Ora",
+  "Undefined": "Non definito",
   "Version": "Versione",
   "About": {
     "Key": "Informazioni"

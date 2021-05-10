@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import {
   IconButton,
@@ -14,6 +15,7 @@ import LinkIcon from "@material-ui/icons/Link";
 import PhoneIcon from "@material-ui/icons/Phone";
 
 export default function ContactItem({ contact: _contact, onChange, onDelete }) {
+  const { t } = useTranslation();
   const [contact, setContact] = useState(_contact);
 
   useEffect(() => {
@@ -26,10 +28,10 @@ export default function ContactItem({ contact: _contact, onChange, onDelete }) {
 
   const typeLabel =
     {
-      email: "Email",
-      link: "Link",
-      phone: "Telefono",
-    }[type] || "Non definito";
+      email: t("Email"),
+      link: t("Link"),
+      phone: t("Telephone"),
+    }[type] || t("Undefined");
 
   const handleChange = (field) => ({ target: { value } }) =>
     setContact({ ...contact, [field]: value });
