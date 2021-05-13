@@ -36,7 +36,25 @@
   "Performance": {
     "Key": "Prestazione",
     "Key_plural": "Prestazioni",
-    "Search": "Cerca Prestazioni"
+    "key": "performance",
+    "Key_plural": "performances",
+    "Balance": "Saldo",
+    "Cost": "Costo",
+    "Confirm delete performance": "Confermi di eliminare la $(Performance.key)?",
+    "Discount": "Sconto",
+    "Delete": "Delete $(Performance.Key)",
+    "Length": "Durata",
+    "Notes": "Note",
+    "Price": "Price",
+    "Search": "Cerca Prestazioni",
+    "StartDate": "Data di inizio",
+    "StartHour": "Ora di inizio",
+    "Total": "Totale",
+    "Snackbar": {
+      "InvalidPrice": "La tariffa inserita non è valida",
+      "ChangesSaved": "Modifiche salvate",
+      "PerformanceDeleted": "Prestazione eliminata"
+    }
   },
   "Settings": {
     "Key": "Impostazioni",

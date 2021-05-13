@@ -31,9 +31,12 @@ const target = require(`../public/locales/${toLng}/translation.json`);
 function compare(path, baseLng, targetLng) {
   Object.keys(baseLng).forEach((item) => {
     if (typeof baseLng[item] === "object") {
-      return compare([...path, item], baseLng[item], targetLng[item]);
-    }
-    if (targetLng[item] === undefined) {
+      if (targetLng[item] === undefined) {
+        console.log([...path, item].join("."));
+      } else {
+        compare([...path, item], baseLng[item], targetLng[item]);
+      }
+    } else if (targetLng[item] === undefined) {
       console.log([...path, item].join("."));
     }
   });

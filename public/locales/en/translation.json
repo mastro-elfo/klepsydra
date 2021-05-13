@@ -36,7 +36,24 @@
   "Performance": {
     "Key": "Performance",
     "Key_plural": "Performances",
-    "Search": "Search Performance"
+    "key": "performance",
+    "Key_plural": "performances",
+    "Balance": "Balance",
+    "Confirm delete performance": "Confirm to delete this $(Performance.key)?",
+    "Cost": "Cost",
+    "Discount": "Discount",
+    "Length": "Length",
+    "Notes": "Notes",
+    "Price": "Price",
+    "Search": "Search Performance",
+    "StartDate": "Start date",
+    "StartHour": "Start hour",
+    "Total": "Total",
+    "Snackbar": {
+      "InvalidPrice": "Inserted price is invalid",
+      "ChangesSaved": "Changes saved",
+      "PerformanceDeleted": "Performance deleted"
+    }
   },
   "Settings": {
     "Key": "Settings",

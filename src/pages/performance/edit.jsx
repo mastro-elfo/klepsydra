@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import { useTranslation } from "react-i18next";
+
 import {
   IconButton,
   InputAdornment,
@@ -37,6 +39,7 @@ import SaveIcon from "@material-ui/icons/Save";
 // import TimerIcon from "@material-ui/icons/Timer";
 
 function Component() {
+  const { t } = useTranslation();
   const [settings] = useSettings();
   const { go, goBack, location } = useHistory();
   const { id } = useParams();
@@ -70,14 +73,16 @@ function Component() {
     // Check client
     // Check price
     if (isNaN(price) || price < 0) {
-      return enqueueSnackbar("La tariffa inserita non è valida", {
+      return enqueueSnackbar(t("Performance.Snackbar.InvalidPrice"), {
         variant: "warning",
       });
     }
     update(id, { ...performance, payed })
       .then((r) => {
         // console.log(r);
-        enqueueSnackbar("Modifiche salvate", { variant: "success" });
+        enqueueSnackbar(t("Performance.Snackbar.ChangesSaved"), {
+          variant: "success",
+        });
         setTimeout(goBack, 500);
       })
       .catch((e) => {
@@ -90,7 +95,9 @@ function Component() {
     destroy(id)
       .then((r) => {
         // console.log(r);
-        enqueueSnackbar("Prestazione eliminata", { variant: "success" });
+        enqueueSnackbar(t("Performance.Snackbar.PerformanceDeleted"), {
+          variant: "success",
+        });
         setTimeout(go, 500, -2);
       })
       .catch((e) => {
@@ -159,7 +166,7 @@ function Component() {
             <ListItem>
               <ListItemText
                 primary={`${name} ${surname}`}
-                secondary="Studente"
+                secondary={t("Client.Key")}
               />{" "}
               <ListItemSecondaryAction>
                 <IconButton onClick={handleReloadClient}>
@@ -170,7 +177,7 @@ function Component() {
             <ListItem>
               <ListItemText
                 primary={`${balance.toFixed(2)} ${settings.currency}`}
-                secondary="Saldo"
+                secondary={t("Performance.Balance")}
               />
               <ListItemSecondaryAction>
                 <IconButton onClick={handleAddPayment} disabled={payed}>
@@ -181,7 +188,7 @@ function Component() {
             <ListItem>
               <KeyboardDatePicker
                 fullWidth
-                label="Data di inizio"
+                label={t("Performance.StartDate")}
                 value={start}
                 onChange={handleChangeStart}
                 format="dd/MM/yyyy"
@@ -189,7 +196,7 @@ function Component() {
               <KeyboardTimePicker
                 fullWidth
                 ampm={false}
-                label="Ora di inizio"
+                label={t("Performance.StartHour")}
                 value={start}
                 onChange={handleChangeStart}
                 views={["hours", "minutes", "seconds"]}
@@ -200,7 +207,7 @@ function Component() {
             <ListItem>
               <DurationField
                 fullWidth
-                label="Durata"
+                label={t("Performance.Length")}
                 value={length}
                 onChange={handleChangeLength}
               />
@@ -208,7 +215,7 @@ function Component() {
             <ListItem>
               <TextField
                 fullWidth
-                label="Tariffa"
+                label={t("Performance.Price")}
                 type="number"
                 value={parseFloat(price || 0).toFixed(2)}
                 onChange={handleChange("price", parseFloat)}
@@ -227,13 +234,13 @@ function Component() {
                 primary={`${parseFloat(cost || 0).toFixed(2)} ${
                   settings.currency
                 }`}
-                secondary="Costo"
+                secondary={t("Performance.Cost")}
               />
             </ListItem>
             <ListItem>
               <TextField
                 fullWidth
-                label="Sconto"
+                label={t("Performance.Discount")}
                 type="number"
                 value={parseFloat(discount || 0).toFixed(2)}
                 onChange={handleChange("discount", parseFloat)}
@@ -263,7 +270,7 @@ function Component() {
                 primary={`${parseFloat(total || 0).toFixed(2)} ${
                   settings.currency
                 }`}
-                secondary="Totale"
+                secondary={t("Performance.Total")}
               />
             </ListItem>
             <ListItem>
@@ -271,7 +278,7 @@ function Component() {
                 fullWidth
                 multiline
                 variant="outlined"
-                label="Note"
+                label={t("Performance.Notes")}
                 rows={2}
                 rowsMax={4}
                 value={note}
@@ -298,13 +305,13 @@ function Component() {
                 Component={DangerButton}
                 onConfirm={handleDelete}
                 DialogProps={{
-                  title: "Elimina Prestazione",
-                  content: `Confermi di eliminare la prestazione?`,
-                  confirm: "Elimina",
-                  cancel: "Annulla",
+                  title: t("Performance.Delete"),
+                  content: t("Performance.Confirm delete performance"),
+                  confirm: t("Delete"),
+                  cancel: t("Cancel"),
                 }}
               >
-                Elimina
+                {t("Delete")}
               </ConfirmDialogButton>
             </ListItem>
           </List>
