@@ -169,7 +169,6 @@ function Component() {
                 _id,
                 key: _id,
                 primary: `${name} ${surname}`,
-                // TODO: Remove `contacts &&`
                 secondary: contacts && contacts.length ? contacts[0].value : "",
                 href: `/client/view/${_id}`,
               }))

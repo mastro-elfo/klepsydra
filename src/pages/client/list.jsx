@@ -92,10 +92,9 @@ function Component() {
               >
                 <ListItemText
                   primary={`${name} ${surname}`}
-                  secondary={
-                    // TODO: Remove `contacts &&`
-                    `${contacts && contacts.length ? contacts[0].value : ""}`
-                  }
+                  secondary={`${
+                    contacts && contacts.length ? contacts[0].value : ""
+                  }`}
                 />
               </ListItem>
             ))}

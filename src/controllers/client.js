@@ -8,8 +8,8 @@ export const defaultValue = {
   price: 0,
   surname: "",
   // TODO: Deprecated, will be removed soon
-  email: "",
-  telephone: "",
+  // email: "",
+  // telephone: "",
 };
 
 export function fromObject(...data) {
@@ -23,8 +23,8 @@ const fields = [
   "price",
   "surname",
   // TODO: Deprecated, will be removed soon
-  "email",
-  "telephone",
+  // "email",
+  // "telephone",
 ];
 
 export async function init() {

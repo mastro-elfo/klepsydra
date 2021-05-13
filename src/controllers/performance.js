@@ -35,9 +35,8 @@ const fields = [
   "_id",
   "client",
   "discount",
-  // TODO: Remove, use length instead
   "end",
-  "length",
+  // "length",
   "note",
   "pauses",
   "payed",
