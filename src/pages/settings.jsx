@@ -164,23 +164,25 @@ function Component() {
             </ListItem>
           </List>
 
-          <List
-            subheader={
-              <ListSubheader>{t("Settings.Introduction")}</ListSubheader>
-            }
-          >
-            <ListItem
-              button
-              onClick={() => setSettings({ ...settings, intro: true })}
-            >
-              <ListItemHelp>
-                <Typography variant="body2">
-                  {t("Settings.Intro.Click to watch again")}
-                </Typography>
-              </ListItemHelp>
-              <ListItemText primary={t("Settings.Intro.Watch Again")} />
-            </ListItem>
-          </List>
+          {
+            //   <List
+            //   subheader={
+            //     <ListSubheader>{t("Settings.Introduction")}</ListSubheader>
+            //   }
+            // >
+            //   <ListItem
+            //     button
+            //     onClick={() => setSettings({ ...settings, intro: true })}
+            //   >
+            //     <ListItemHelp>
+            //       <Typography variant="body2">
+            //         {t("Settings.Intro.Click to watch again")}
+            //       </Typography>
+            //     </ListItemHelp>
+            //     <ListItemText primary={t("Settings.Intro.Watch Again")} />
+            //   </ListItem>
+            // </List>
+          }
         </Content>
       }
     />

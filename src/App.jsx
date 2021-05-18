@@ -18,7 +18,7 @@ import { route as settings } from "./pages/settings";
 import { route as tracker } from "./pages/tracker";
 // Aside
 import AppLoader from "./AppLoader";
-import Intro from "./pages/intro";
+// import Intro from "./pages/intro";
 
 // Import contextes
 import SettingsProvider from "./pages/settings/context";
@@ -68,7 +68,7 @@ export default function App() {
         Children: [
           { Component: AppLoader, loading: !initialized },
           { Component: SettingsProvider },
-          { Component: Intro },
+          // { Component: Intro },
           {
             Component: TrackerProvider,
           },
