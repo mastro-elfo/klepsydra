@@ -8,7 +8,7 @@ export default function Loading({ children, title = "Loading..." }) {
       TopFabProps={{ color: "secondary", size: "small" }}
       header={
         <Header
-          LeftAction={
+          leftAction={
             <IconButton>
               <WaitIcon />
             </IconButton>

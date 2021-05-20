@@ -40,7 +40,7 @@ function Component() {
     <Page
       TopFabProps={{ color: "secondary", size: "small" }}
       header={
-        <Header LeftAction={<BackIconButton />}>{t("Settings.Key")}</Header>
+        <Header leftAction={<BackIconButton />}>{t("Settings.Key")}</Header>
       }
       content={
         <Content>

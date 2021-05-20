@@ -30,7 +30,7 @@ function Component() {
   return (
     <Page
       TopFabProps={{ color: "secondary", size: "small" }}
-      header={<Header LeftAction={<BackIconButton />}>Informazioni</Header>}
+      header={<Header leftAction={<BackIconButton />}>Informazioni</Header>}
       content={
         <Content>
           <List>

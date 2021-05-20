@@ -92,7 +92,7 @@ function Component() {
       TopFabProps={{ color: "secondary", size: "small" }}
       header={
         <Header
-          LeftAction={[
+          leftAction={[
             <DrawerIconButton key="drawer" color="inherit">
               <DrawerLists
                 lists={[
@@ -149,7 +149,7 @@ function Component() {
               onClear={handleClear}
             />,
           ]}
-          RightActions={
+          rightAction={
             <Push href="/tracker">
               <IconButton color="inherit">{statusIcon}</IconButton>
             </Push>

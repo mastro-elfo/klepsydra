@@ -169,7 +169,7 @@ function Component() {
       TopFabProps={{ color: "secondary", size: "small" }}
       header={
         <Header
-          LeftAction={[
+          leftAction={[
             <BackIconButton key="back" />,
             <HeaderSearchField
               key="search"
@@ -179,7 +179,7 @@ function Component() {
               onClear={handleClear}
             />,
           ]}
-          RightActions={[
+          rightAction={[
             <Push key="create" replace href="/tracker">
               <IconButton disabled={selected.length !== 0}>
                 <AddIcon />

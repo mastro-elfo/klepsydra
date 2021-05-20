@@ -23,7 +23,7 @@ function Component() {
       TopFabProps={{ color: "secondary", size: "small" }}
       header={
         <Header
-          LeftAction={
+          leftAction={
             <Push replace href="/">
               <IconButton>
                 <DashboardIcon />

@@ -45,8 +45,8 @@ function Component() {
       TopFabProps={{ color: "secondary", size: "small" }}
       header={
         <Header
-          LeftAction={<BackIconButton />}
-          RightActions={[
+          leftAction={<BackIconButton />}
+          rightAction={[
             <Push key="edit" href={`/client/edit/${_id}`} state={client}>
               <IconButton>
                 <EditIcon />

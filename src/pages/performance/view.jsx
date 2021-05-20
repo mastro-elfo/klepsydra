@@ -40,8 +40,8 @@ function Component() {
       TopFabProps={{ color: "secondary", size: "small" }}
       header={
         <Header
-          LeftAction={<BackIconButton />}
-          RightActions={[
+          leftAction={<BackIconButton />}
+          rightAction={[
             <IconButton key="print" onClick={handlePrint}>
               <PrintIcon />
             </IconButton>,

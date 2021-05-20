@@ -69,7 +69,7 @@ function Component() {
     <Page
       TopFabProps={{ color: "secondary", size: "small" }}
       header={
-        <Header LeftAction={<BackIconButton />} RightActions={<Controllers />}>
+        <Header leftAction={<BackIconButton />} rightAction={<Controllers />}>
           <Timer />
         </Header>
       }
