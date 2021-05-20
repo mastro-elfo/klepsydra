@@ -5,7 +5,6 @@ import WaitIcon from "@material-ui/icons/HourglassEmpty";
 export default function Loading({ children, title = "Loading..." }) {
   return (
     <Page
-      TopFabProps={{ color: "secondary", size: "small" }}
       header={
         <Header
           leftAction={

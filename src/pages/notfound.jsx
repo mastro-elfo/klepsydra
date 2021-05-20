@@ -20,7 +20,6 @@ function Component() {
   useTitle(`404 ${t("Page Not Found")}`);
   return (
     <Page
-      TopFabProps={{ color: "secondary", size: "small" }}
       header={
         <Header
           leftAction={

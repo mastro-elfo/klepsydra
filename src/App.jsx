@@ -81,6 +81,9 @@ export default function App() {
           horizontal: "center",
         },
       }}
+      ConfigProps={{
+        TopFab: { color: "secondary", size: "small" },
+      }}
     />
   );
 }

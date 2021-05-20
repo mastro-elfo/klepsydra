@@ -147,7 +147,6 @@ function Component() {
 
   return (
     <Page
-      TopFabProps={{ color: "secondary", size: "small" }}
       header={
         <Header
           leftAction={<BackIconButton />}
