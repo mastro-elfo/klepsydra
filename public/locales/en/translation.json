@@ -37,7 +37,7 @@
     "Key": "Performance",
     "Key_plural": "Performances",
     "key": "performance",
-    "Key_plural": "performances",
+    "key_plural": "performances",
     "Balance": "Balance",
     "Confirm delete performance": "Confirm to delete this $(Performance.key)?",
     "Cost": "Cost",

@@ -37,7 +37,7 @@
     "Key": "Prestazione",
     "Key_plural": "Prestazioni",
     "key": "performance",
-    "Key_plural": "performances",
+    "key_plural": "performances",
     "Balance": "Saldo",
     "Cost": "Costo",
     "Confirm delete performance": "Confermi di eliminare la $(Performance.key)?",
