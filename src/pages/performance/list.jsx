@@ -51,7 +51,7 @@ function Component() {
   const [skip, setSkip] = useState(0);
   const { t } = useTranslation();
 
-  useEffect(() => setSkip(() => 0), [searchQuery]);
+  useEffect(() => setSkip(() => 0), [searchQuery, fromDate, toDate, notPayed]);
 
   useEffect(() => {
     if (!searchQuery) {
