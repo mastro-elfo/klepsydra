@@ -41,6 +41,7 @@
     "Balance": "Balance",
     "Confirm delete performance": "Confirm to delete this $(Performance.key)?",
     "Cost": "Cost",
+    "Delete": "Delete $(Performance.Key)",
     "Discount": "Discount",
     "Length": "Length",
     "Notes": "Notes",
