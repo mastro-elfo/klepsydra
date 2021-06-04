@@ -1,0 +1,114 @@
+{
+  "Cancel": "Cancel",
+  "Date": "Date",
+  "Delete": "Discard",
+  "Email": "Email",
+  "Error": {
+    "Generic": "Generic error",
+    "Save": "Saving error"
+  },
+  "Link": "Link",
+  "MIT License": "MIT License",
+  "Open": "Open",
+  "Page Not Found": "Page Not Found",
+  "Pause": "Pause",
+  "Pause_plural": "Pauses",
+  "Save": "Save",
+  "Search": "Search",
+  "Software Development": "Software Development",
+  "Status": "Status",
+  "Telephone": "Telephone",
+  "Time": "Time",
+  "Undefined": "Undefined",
+  "Version": "Version",
+  "About": {
+    "Key": "About"
+  },
+  "Client": {
+    "Key": "Student",
+    "Key_plural": "Students",
+    "Search": "Search Students"
+  },
+  "NotFound": {
+    "Content": "It is impossible to open the page you were looking for.",
+    "Back to Dashboard": "Back to Dashboard"
+  },
+  "Performance": {
+    "Key": "Performance",
+    "Key_plural": "Performances",
+    "key": "performance",
+    "key_plural": "performances",
+    "Balance": "Balance",
+    "Confirm delete performance": "Confirm to delete this $(Performance.key)?",
+    "Cost": "Cost",
+    "Discount": "Discount",
+    "Length": "Length",
+    "Notes": "Notes",
+    "Price": "Price",
+    "Search": "Search Performance",
+    "StartDate": "Start date",
+    "StartHour": "Start hour",
+    "Total": "Total",
+    "Snackbar": {
+      "InvalidPrice": "Inserted price is invalid",
+      "ChangesSaved": "Changes saved",
+      "PerformanceDeleted": "Performance deleted"
+    }
+  },
+  "Settings": {
+    "Key": "Settings",
+    "General": "General",
+    "Print": "Print",
+    "Introduction": "Introduction",
+    "Price": {
+      "Key": "Price",
+      "Tooltip": "This is your base price, you can set different prices for each student and for each performance"
+    },
+    "Rounding": {
+      "Key": "Rounding",
+      "Tooltip": "Automatically apply a discount to round to the nearest value"
+    },
+    "Currency": {
+      "Key": "Currency",
+      "Tooltip": "Set currency symbol"
+    },
+    "PrintTitle": {
+      "Key": "Title",
+      "Tooltip": "Print page title"
+    },
+    "PrintBefore": {
+      "Key": "Before",
+      "Tooltip": "Text before the table, may contain more rows"
+    },
+    "PrintAfter": {
+      "Key": "After",
+      "Tooltip": "Text after the table, may contain more rows"
+    },
+    "Intro": {
+      "Click to watch again": "Click to watch again the introduction",
+      "Watch Again": "Watch Again"
+    }
+  },
+  "Tracker": {
+    "Key": "Tracker",
+    "Stop the tracker": "Stop the tracker",
+    "Stop the tracker and save the performance": "Stop the tracker and save the performance",
+    "Discard current tracker": "Discard current tracker",
+    "Cancel to not modify anything": "Cancel to not modify anything",
+    "Status": {
+      "undefined": "",
+      "paused": "Paused",
+      "started": "Started",
+      "stopped": "Stopped"
+    },
+    "Snackbar": {
+      "Started": "Tracker Started",
+      "Paused": "Tracker in Pause",
+      "Stopped": "Tracker stopped",
+      "Saved": "$t(Performance.Key) saved",
+      "Discarded": "$t(Performance.Key) discarded",
+      "ClientNotSelected": "Select a $t(Client.Key)",
+      "PriceNotValid": "Price is not valid"
+    }
+  }
+}

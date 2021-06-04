@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/klepsydra/static/css/main.bb21c8f7.chunk.css",
+    "main.js": "/klepsydra/static/js/main.251968ce.chunk.js",
+    "main.js.map": "/klepsydra/static/js/main.251968ce.chunk.js.map",
+    "runtime-main.js": "/klepsydra/static/js/runtime-main.4be93a2f.js",
+    "runtime-main.js.map": "/klepsydra/static/js/runtime-main.4be93a2f.js.map",
+    "static/js/2.6eeeb5b1.chunk.js": "/klepsydra/static/js/2.6eeeb5b1.chunk.js",
+    "static/js/2.6eeeb5b1.chunk.js.map": "/klepsydra/static/js/2.6eeeb5b1.chunk.js.map",
+    "static/js/3.d2f9675e.chunk.js": "/klepsydra/static/js/3.d2f9675e.chunk.js",
+    "static/js/3.d2f9675e.chunk.js.map": "/klepsydra/static/js/3.d2f9675e.chunk.js.map",
+    "index.html": "/klepsydra/index.html",
+    "static/css/main.bb21c8f7.chunk.css.map": "/klepsydra/static/css/main.bb21c8f7.chunk.css.map",
+    "static/js/2.6eeeb5b1.chunk.js.LICENSE.txt": "/klepsydra/static/js/2.6eeeb5b1.chunk.js.LICENSE.txt",
+    "static/media/background.d22ce5ba.svg": "/klepsydra/static/media/background.d22ce5ba.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4be93a2f.js",
+    "static/js/2.6eeeb5b1.chunk.js",
+    "static/css/main.bb21c8f7.chunk.css",
+    "static/js/main.251968ce.chunk.js"
+  ]
+}

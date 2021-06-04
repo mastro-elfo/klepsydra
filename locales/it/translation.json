@@ -1,0 +1,115 @@
+{
+  "Cancel": "Annulla",
+  "Date": "Data",
+  "Delete": "Elimina",
+  "Email": "Email",
+  "Error": {
+    "Generic": "Errore generico",
+    "Save": "Errore nel salvataggio"
+  },
+  "Link": "Link",
+  "MIT License": "Licenza MIT",
+  "Open": "Apri",
+  "Page Not Found": "Pagina non trovata",
+  "Pause": "Pausa",
+  "Pause_plural": "Pause",
+  "Save": "Salva",
+  "Search": "Cerca",
+  "Software Development": "Sviluppo Software",
+  "Status": "Stato",
+  "Telephone": "Telefono",
+  "Time": "Ora",
+  "Undefined": "Non definito",
+  "Version": "Versione",
+  "About": {
+    "Key": "Informazioni"
+  },
+  "Client": {
+    "Key": "Studente",
+    "Key_plural": "Studenti",
+    "Search": "Cerca Studenti"
+  },
+  "NotFound": {
+    "Content": "Non è possibile aprire la pagina che stavi cercando.",
+    "Back to Dashboard": "Torna alla pagina principale"
+  },
+  "Performance": {
+    "Key": "Prestazione",
+    "Key_plural": "Prestazioni",
+    "key": "performance",
+    "key_plural": "performances",
+    "Balance": "Saldo",
+    "Cost": "Costo",
+    "Confirm delete performance": "Confermi di eliminare la $(Performance.key)?",
+    "Discount": "Sconto",
+    "Delete": "Delete $(Performance.Key)",
+    "Length": "Durata",
+    "Notes": "Note",
+    "Price": "Price",
+    "Search": "Cerca Prestazioni",
+    "StartDate": "Data di inizio",
+    "StartHour": "Ora di inizio",
+    "Total": "Totale",
+    "Snackbar": {
+      "InvalidPrice": "La tariffa inserita non è valida",
+      "ChangesSaved": "Modifiche salvate",
+      "PerformanceDeleted": "Prestazione eliminata"
+    }
+  },
+  "Settings": {
+    "Key": "Impostazioni",
+    "General": "Generale",
+    "Print": "Stampa",
+    "Introduction": "Introduzione",
+    "Price": {
+      "Key": "Tariffa",
+      "Tooltip": "Questa è la tua tariffa base, puoi selezionare tariffe diverse per ogni cliente e per ogni prestazione"
+    },
+    "Rounding": {
+      "Key": "Arrotondamento",
+      "Tooltip": "Applica automaticamente uno sconto per arrotondare al valore più vicino"
+    },
+    "Currency": {
+      "Key": "Valuta",
+      "Tooltip": "Imposta il simbolo della valuta"
+    },
+    "PrintTitle": {
+      "Key": "Titolo",
+      "Tooltip": "Titolo della pagina di stampa"
+    },
+    "PrintBefore": {
+      "Key": "Prima",
+      "Tooltip": "Testo prima della tabella, può contenere più righe"
+    },
+    "PrintAfter": {
+      "Key": "Dopo",
+      "Tooltip": "Testo dopo la tabella, può contenere più righe"
+    },
+    "Intro": {
+      "Click to watch again": "Clicca per rivedere l'introduzione iniziale",
+      "Watch Again": "Rivedi Introduzione"
+    }
+  },
+  "Tracker": {
+    "Key": "Cronometro",
+    "Stop the tracker": "Ferma il Cronometro",
+    "Stop the tracker and save the performance": "Puoi fermare il cronometro e salvare la prestazione",
+    "Discard current tracker": "Puoi eliminare il cronometro corrente",
+    "Cancel to not modify anything": "Annulla per non applicare modifiche",
+    "Status": {
+      "undefined": "",
+      "paused": "In Pausa",
+      "started": "Avviato",
+      "stopped": "Fermato"
+    },
+    "Snackbar": {
+      "Started": "Cronometro avviato",
+      "Paused": "Cronometro in pausa",
+      "Stopped": "Cronometro interrotto",
+      "Saved": "$t(Performance.Key) salvata",
+      "Discarded": "$t(Performance.Key) eliminata",
+      "ClientNotSelected": "Seleziona uno $t(Client.Key)",
+      "PriceNotValid": "La tariffa non è valida"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 24 24" width="24px" height="24px" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <bx:grid x="0" y="0" width="12" height="12"/>
+    <mask id="mask-0">
+      <path style="fill: rgb(255, 255, 255);" d="M 9.605 0 L 14.405 0 C 19.205 0 12.245 9.6 12.245 12 C 12.245 14.4 19.205 24 14.405 24 L 9.605 24 C 4.805 24 11.765 14.4 11.765 12 C 11.765 9.6 4.805 0 9.605 0 Z">
+        <title>SandMask</title>
+      </path>
+    </mask>
+  </defs>
+  <path style="fill: rgb(216, 216, 216); fill-opacity: 0.25;" d="M 9.6 0 L 14.4 0 C 19.2 0 12.24 9.6 12.24 12 C 12.24 14.4 19.2 24 14.4 24 L 9.6 24 C 4.8 24 11.76 14.4 11.76 12 C 11.76 9.6 4.8 0 9.6 0 Z">
+    <title>BackGlass</title>
+  </path>
+  <path style="fill: rgb(255, 187, 0); mask: url(#mask-0);" d="M 9.605 24 C 4.783 24 11.525 19.2 12.005 19.2 C 12.485 19.2 19.205 24 14.405 24 Z M 15.605 4.8 C 14.405 6 12.245 12.48 12.005 12.48 C 11.765 12.48 9.605 6 8.405 4.8 C 12.005 6 12.005 6 15.605 4.8 Z">
+    <title>Sand</title>
+  </path>
+  <path style="fill: rgb(216, 216, 216); fill-opacity: 0.25;" d="M 9.6 0 L 14.4 0 C 19.2 0 12.24 9.6 12.24 12 C 12.24 14.4 19.2 24 14.4 24 L 9.6 24 C 4.8 24 11.76 14.4 11.76 12 C 11.76 9.6 4.8 0 9.6 0 Z">
+    <title>FrontGlass</title>
+  </path>
+  <path style="fill: rgb(255, 255, 255); fill-opacity: 0.5;" d="M 9.6 0 C 7.199 2.398 12 9.6 12 12 C 12 14.4 7.2 21.6 9.6 24 L 12 24 C 9.6 21.6 12 14.4 12 12 C 12 9.6 9.608 2.359 12 0 L 9.6 0 Z">
+    <title>Light</title>
+  </path>
+</svg>
