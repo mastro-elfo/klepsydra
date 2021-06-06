@@ -1,4 +1,5 @@
 import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import DurationPickerDialog from "../../components/DurationPickerDialog";
 import {
   Button,
@@ -28,6 +29,8 @@ export default function DurationField({ value, onChange = () => {}, ...rest }) {
     const s = String(seconds).padStart(2, "0");
     setFieldValue(`${h}:${m}:${s}`);
   }, [actual]);
+
+  const { t } = useTranslation();
 
   const handleConfirm = useCallback(() => {
     const { hours, minutes, seconds } = duration;
@@ -78,8 +81,8 @@ export default function DurationField({ value, onChange = () => {}, ...rest }) {
           initialDuration: actual,
         }}
       >
-        <Button onClick={handleConfirm}>Ok</Button>
-        <Button onClick={() => setOpen(false)}>Cancel</Button>
+        <Button onClick={handleConfirm}>{t("Ok")}</Button>
+        <Button onClick={() => setOpen(false)}>{t("Cancel")}</Button>
       </DurationPickerDialog>
     </Fragment>
   );
