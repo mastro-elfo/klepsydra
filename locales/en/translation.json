@@ -1,5 +1,6 @@
 {
   "Cancel": "Cancel",
+  "Confirm": "Confirm",
   "Date": "Date",
   "Delete": "Discard",
   "Email": "Email",
@@ -9,6 +10,7 @@
   },
   "Link": "Link",
   "MIT License": "MIT License",
+  "Ok": "Ok",
   "Open": "Open",
   "Page Not Found": "Page Not Found",
   "Pause": "Pause",
