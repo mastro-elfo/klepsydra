@@ -27,8 +27,11 @@
     "Key": "About"
   },
   "Client": {
+    "key": "student",
+    "key_plural": "students",
     "Key": "Student",
     "Key_plural": "Students",
+    "NoClient": "Start adding some $t(Client.key) to the database",
     "Search": "Search Students"
   },
   "NotFound": {
@@ -41,12 +44,13 @@
     "key": "performance",
     "key_plural": "performances",
     "Balance": "Balance",
-    "Confirm delete performance": "Confirm to delete this $(Performance.key)?",
+    "Confirm delete performance": "Confirm to delete this $t(Performance.key)?",
     "Cost": "Cost",
-    "Delete": "Delete $(Performance.Key)",
+    "Delete": "Delete $t(Performance.Key)",
     "Discount": "Discount",
     "Length": "Length",
     "Notes": "Notes",
+    "NoPerformance": "No $t(Performance.key) to show",
     "Price": "Price",
     "Search": "Search Performance",
     "StartDate": "Start date",
