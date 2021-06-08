@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { useTranslation } from "react-i18next";
-import { IconButton } from "@material-ui/core";
+import { IconButton, Typography } from "@material-ui/core";
 
 import {
   DrawerIconButton,
@@ -172,6 +172,7 @@ function Component() {
                 href: `/client/view/${_id}`,
               }))
             }
+            alt={<Typography>{t("Client.NoClient")}</Typography>}
           />
           <ResultList
             title={t("Performance.Key", {
@@ -192,6 +193,7 @@ function Component() {
                 })
               )
             }
+            alt={<Typography>{t("Performance.NoPerformance")}</Typography>}
           />
         </Content>
       }
