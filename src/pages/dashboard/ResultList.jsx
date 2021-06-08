@@ -7,7 +7,7 @@ export default function ResultList({ Item = ResultItem, Icon, list, title }) {
     <Grid container>
       <Grid item xs={12}>
         <Typography variant="h6">
-          {title} ({list.length})
+          {title} {list.length > 0 ? `(${list.length})` : ""}
         </Typography>
       </Grid>
       <Grid item xs={12} container>
