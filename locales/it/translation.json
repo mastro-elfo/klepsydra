@@ -27,9 +27,12 @@
     "Key": "Informazioni"
   },
   "Client": {
+    "key": "studente",
+    "key_plural": "studente",
     "Key": "Studente",
     "Key_plural": "Studenti",
-    "Search": "Cerca Studenti"
+    "NoClient": "Per iniziare inserisci alcuni $t(Client.key_plural) nel database",
+    "Search": "Cerca $t(Client.key_plural)"
   },
   "NotFound": {
     "Content": "Non è possibile aprire la pagina che stavi cercando.",
@@ -38,24 +41,25 @@
   "Performance": {
     "Key": "Prestazione",
     "Key_plural": "Prestazioni",
-    "key": "performance",
-    "key_plural": "performances",
+    "key": "prestazione",
+    "key_plural": "prestazioni",
     "Balance": "Saldo",
     "Cost": "Costo",
-    "Confirm delete performance": "Confermi di eliminare la $(Performance.key)?",
-    "Delete": "Elimina $(Performance.Key)",
+    "Confirm delete performance": "Confermi di eliminare la $t(Performance.key)?",
+    "Delete": "Elimina $t(Performance.Key)",
     "Discount": "Sconto",
     "Length": "Durata",
     "Notes": "Note",
+    "NoPerformance": "Non ci sono $t(Performance.key_plural) da mostrare",
     "Price": "Price",
-    "Search": "Cerca Prestazioni",
+    "Search": "Cerca $t(Preformance.key_plural)",
     "StartDate": "Data di inizio",
     "StartHour": "Ora di inizio",
     "Total": "Totale",
     "Snackbar": {
       "InvalidPrice": "La tariffa inserita non è valida",
       "ChangesSaved": "Modifiche salvate",
-      "PerformanceDeleted": "Prestazione eliminata"
+      "PerformanceDeleted": "$t(Preformance.Key) eliminata"
     }
   },
   "Settings": {

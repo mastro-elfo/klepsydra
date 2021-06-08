@@ -27,9 +27,12 @@
     "Key": "About"
   },
   "Client": {
+    "key": "student",
+    "key_plural": "students",
     "Key": "Student",
     "Key_plural": "Students",
-    "Search": "Search Students"
+    "NoClient": "Start adding some $t(Client.key) to the database",
+    "Search": "Search $t(Client.key_plural)"
   },
   "NotFound": {
     "Content": "It is impossible to open the page you were looking for.",
@@ -41,21 +44,22 @@
     "key": "performance",
     "key_plural": "performances",
     "Balance": "Balance",
-    "Confirm delete performance": "Confirm to delete this $(Performance.key)?",
+    "Confirm delete performance": "Confirm to delete this $t(Performance.key)?",
     "Cost": "Cost",
-    "Delete": "Delete $(Performance.Key)",
+    "Delete": "Delete $t(Performance.Key)",
     "Discount": "Discount",
     "Length": "Length",
     "Notes": "Notes",
+    "NoPerformance": "No $t(Performance.key) to show",
     "Price": "Price",
-    "Search": "Search Performance",
+    "Search": "Search $t(Preformance.key_plural)",
     "StartDate": "Start date",
     "StartHour": "Start hour",
     "Total": "Total",
     "Snackbar": {
       "InvalidPrice": "Inserted price is invalid",
       "ChangesSaved": "Changes saved",
-      "PerformanceDeleted": "Performance deleted"
+      "PerformanceDeleted": "$t(Preformance.Key) deleted"
     }
   },
   "Settings": {
