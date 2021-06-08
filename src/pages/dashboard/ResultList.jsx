@@ -1,7 +1,13 @@
 import { Grid, Typography } from "@material-ui/core";
 import ResultItem from "./ResultItem";
 
-export default function ResultList({ Item = ResultItem, Icon, list, title }) {
+export default function ResultList({
+  Item = ResultItem,
+  Icon,
+  list,
+  title,
+  alt,
+}) {
   if (!list) return null;
   return (
     <Grid container>
@@ -11,6 +17,7 @@ export default function ResultList({ Item = ResultItem, Icon, list, title }) {
         </Typography>
       </Grid>
       <Grid item xs={12} container>
+        {list.length === 0 ? alt : ""}
         {list.map((item) => (
           <Item icon={Icon ? <Icon /> : <span />} {...item} />
         ))}
