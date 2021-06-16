@@ -249,7 +249,7 @@ function Component() {
                         <BlankIcon />
                       )}
                     </ListItemIcon>
-                    <ListItemText primary="Non pagate" />
+                    <ListItemText primary={t("NotPayed")} />
                   </ListItem>
                 </Grid>
               </Grid>
@@ -257,10 +257,7 @@ function Component() {
           </Paper>
 
           {list.length === 0 && (
-            <Typography>
-              Non ci sono prestazioni, inizia a tracciare per usare questa
-              sezione.
-            </Typography>
+            <Typography>{t("Performance.NoPerformance")}</Typography>
           )}
           <List>
             <InfiniteScroll
