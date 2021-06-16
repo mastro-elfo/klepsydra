@@ -52,14 +52,14 @@
     "Notes": "Notes",
     "NoPerformance": "No $t(Performance.key) to show",
     "Price": "Price",
-    "Search": "Search $t(Preformance.key_plural)",
+    "Search": "Search $t(Performance.key_plural)",
     "StartDate": "Start date",
     "StartHour": "Start hour",
     "Total": "Total",
     "Snackbar": {
       "InvalidPrice": "Inserted price is invalid",
       "ChangesSaved": "Changes saved",
-      "PerformanceDeleted": "$t(Preformance.Key) deleted"
+      "PerformanceDeleted": "$t(Performance.Key) deleted"
     }
   },
   "Settings": {
