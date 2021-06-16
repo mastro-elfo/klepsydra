@@ -28,7 +28,7 @@
   },
   "Client": {
     "key": "studente",
-    "key_plural": "studente",
+    "key_plural": "studenti",
     "Key": "Studente",
     "Key_plural": "Studenti",
     "NoClient": "Per iniziare inserisci alcuni $t(Client.key_plural) nel database",
