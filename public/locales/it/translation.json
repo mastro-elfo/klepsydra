@@ -52,14 +52,14 @@
     "Notes": "Note",
     "NoPerformance": "Non ci sono $t(Performance.key_plural) da mostrare",
     "Price": "Price",
-    "Search": "Cerca $t(Preformance.key_plural)",
+    "Search": "Cerca $t(Performance.key_plural)",
     "StartDate": "Data di inizio",
     "StartHour": "Ora di inizio",
     "Total": "Totale",
     "Snackbar": {
       "InvalidPrice": "La tariffa inserita non è valida",
       "ChangesSaved": "Modifiche salvate",
-      "PerformanceDeleted": "$t(Preformance.Key) eliminata"
+      "PerformanceDeleted": "$t(Performance.Key) eliminata"
     }
   },
   "Settings": {
