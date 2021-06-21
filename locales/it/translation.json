@@ -28,7 +28,7 @@
   },
   "Client": {
     "key": "studente",
-    "key_plural": "studente",
+    "key_plural": "studenti",
     "Key": "Studente",
     "Key_plural": "Studenti",
     "NoClient": "Per iniziare inserisci alcuni $t(Client.key_plural) nel database",
@@ -50,7 +50,7 @@
     "Discount": "Sconto",
     "Length": "Durata",
     "Notes": "Note",
-    "NoPerformance": "Non ci sono $t(Performance.key_plural) da mostrare",
+    "NoPerformance": "Non ci sono $t(Performance.key_plural) da mostrare, inizia a tracciare per usare questa sezione",
     "Price": "Price",
     "Search": "Cerca $t(Performance.key_plural)",
     "StartDate": "Data di inizio",
