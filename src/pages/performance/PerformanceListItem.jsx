@@ -7,6 +7,7 @@ import {
   ListItemText,
   Typography,
 } from "@material-ui/core";
+import { useTranslation } from "react-i18next";
 
 import { useSettings } from "../settings/context";
 import { delta2hms, timeDiff } from "../tracker/utils";
@@ -19,6 +20,8 @@ export default function PerformanceListItem({
   onToggle,
   performance,
 }) {
+  const { t } = useTranslation();
+
   const [settings] = useSettings();
   const {
     client: { name, surname },
@@ -54,19 +57,19 @@ export default function PerformanceListItem({
             <Grid item xs={4} sm={3}>
               <ListItemText
                 primary={new Date(start).toLocaleString()}
-                secondary="Data"
+                secondary={t("Date")}
               />
             </Grid>
             <Grid item xs={4} sm={3}>
               <ListItemText
                 primary={delta2hms(timeDiff(start, end, pauses))}
-                secondary="Durata"
+                secondary={t("Duration")}
               />
             </Grid>
             <Grid item xs={4} sm={3}>
               <ListItemText
                 primary={`${parseFloat(due).toFixed(2)} ${settings.currency}`}
-                secondary="Dovuto"
+                secondary={t("Due")}
               />
             </Grid>
           </Grid>
