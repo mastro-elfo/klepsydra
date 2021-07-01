@@ -3,6 +3,8 @@
   "Confirm": "Confirm",
   "Date": "Date",
   "Delete": "Discard",
+  "Due": "Due",
+  "Duration": "Duration",
   "Email": "Email",
   "Error": {
     "Generic": "Generic error",
