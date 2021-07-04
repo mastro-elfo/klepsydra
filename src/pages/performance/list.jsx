@@ -208,7 +208,7 @@ function Component() {
           ]}
         >
           <Box ml={1}>
-            Totale: {total.toFixed(2)}
+            {t("Performance.Total")}: {total.toFixed(2)}
             {settings.currency}
           </Box>
         </Header>
@@ -222,7 +222,7 @@ function Component() {
                   <KeyboardDatePicker
                     fullWidth
                     clearable
-                    label="Da"
+                    label={t("Performance.From")}
                     value={fromDate}
                     onChange={(date) => setFromDate(date)}
                     maxDate={new Date()}
@@ -233,7 +233,7 @@ function Component() {
                   <KeyboardDatePicker
                     fullWidth
                     clearable
-                    label="A"
+                    label={t("Performance.To")}
                     value={toDate}
                     onChange={(date) => setToDate(date)}
                     maxDate={new Date()}
@@ -249,7 +249,7 @@ function Component() {
                         <BlankIcon />
                       )}
                     </ListItemIcon>
-                    <ListItemText primary={t("NotPayed")} />
+                    <ListItemText primary={t("Performance.NotPayed")} />
                   </ListItem>
                 </Grid>
               </Grid>
