@@ -28,6 +28,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from "./Loader";
 import PayDialogButton from "./PayDialogButton";
 import PerformanceListItem from "./PerformanceListItem";
+import PrintModal from "./PrintModal";
 import PrintTable from "./PrintTable";
 import { useSettings } from "../settings/context";
 import { derived, latest, search } from "../../controllers/performance";
@@ -36,7 +37,7 @@ import AddIcon from "@material-ui/icons/Add";
 import BlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import CheckIcon from "@material-ui/icons/CheckBox";
 // import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
-import PrintIcon from "@material-ui/icons/Print";
+// import PrintIcon from "@material-ui/icons/Print";
 
 function Component() {
   const { enqueueSnackbar } = useSnackbar();
@@ -45,6 +46,7 @@ function Component() {
   const [selected, setSelected] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [print, setPrint] = useState(false);
+  const [printProps, setPrintProps] = useState(settings);
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
   const [notPayed, setNotPayed] = useState(false);
@@ -150,8 +152,10 @@ function Component() {
     setSearchQuery("");
   };
 
-  const handlePrint = () => {
+  const handlePrint = (props) => {
     setPrint(true);
+    console.log(props);
+    setPrintProps(props);
   };
 
   const handleUpdate = () => {
@@ -189,13 +193,18 @@ function Component() {
               selected={selected}
               onUpdate={handleUpdate}
             />,
-            <IconButton
+            // <IconButton
+            //   key="print"
+            //   disabled={selected.length === 0}
+            //   onClick={handlePrint}
+            // >
+            //   <PrintIcon />
+            // </IconButton>,
+            <PrintModal
               key="print"
               disabled={selected.length === 0}
-              onClick={handlePrint}
-            >
-              <PrintIcon />
-            </IconButton>,
+              onPrint={handlePrint}
+            />,
             <Checkbox
               key="select"
               checked={list.length > 0 && list.length === selected.length}
@@ -265,7 +274,6 @@ function Component() {
               next={() => setSkip(skip + 10)}
               hasMore={true}
             >
-              {" "}
               {list.map((performance) => {
                 const { _id } = performance;
                 return (
@@ -282,7 +290,7 @@ function Component() {
           </List>
         </Content>
       }
-      print={!!print ? <PrintTable list={selected} /> : null}
+      print={!!print ? <PrintTable list={selected} {...printProps} /> : null}
     />
   );
 }
