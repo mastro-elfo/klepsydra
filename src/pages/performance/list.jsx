@@ -265,7 +265,6 @@ function Component() {
               next={() => setSkip(skip + 10)}
               hasMore={true}
             >
-              {" "}
               {list.map((performance) => {
                 const { _id } = performance;
                 return (
