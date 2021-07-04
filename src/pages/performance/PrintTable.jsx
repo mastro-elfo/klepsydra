@@ -20,10 +20,15 @@ import { delta2hms, timeDiff } from "../tracker/utils";
 
 import CheckIcon from "@material-ui/icons/CheckCircle";
 
-export default function PrintTable({ list }) {
+export default function PrintTable({
+  list,
+  printTitle,
+  printBefore,
+  printAfter,
+}) {
   // console.log(list);
   const [settings] = useSettings();
-  const { printTitle, printBefore, printAfter } = settings;
+  // const { printTitle, printBefore, printAfter } = settings;
 
   const cost = list
     .map(
