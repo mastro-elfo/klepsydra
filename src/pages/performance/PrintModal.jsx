@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { TextField } from "@material-ui/core";
+import { Checkbox, FormControlLabel, TextField } from "@material-ui/core";
 import { ConfirmDialogButton } from "mastro-elfo-mui";
 // import { useTranslation } from "react-i18next";
 
@@ -14,6 +14,7 @@ export default function PrintModal({ onPrint = () => {}, ...rest }) {
   const [printTitle, setPrintTitle] = useState(settings.printTitle);
   const [printBefore, setPrintBefore] = useState(settings.printBefore);
   const [printAfter, setPrintAfter] = useState(settings.printAfter);
+  const [printNote, setPrintNote] = useState(true);
 
   const handleOpen = () => {
     setPrintTitle(settings.printTitle);
@@ -22,7 +23,12 @@ export default function PrintModal({ onPrint = () => {}, ...rest }) {
   };
 
   const handlePrint = () => {
-    setTimeout(onPrint, 225, { printTitle, printBefore, printAfter });
+    setTimeout(onPrint, 225, {
+      printTitle,
+      printBefore,
+      printAfter,
+      printNote,
+    });
   };
 
   return (
@@ -54,6 +60,15 @@ export default function PrintModal({ onPrint = () => {}, ...rest }) {
               label="After"
               value={printAfter}
               onChange={({ target: { value } }) => setPrintAfter(value)}
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={printNote}
+                  onChange={() => setPrintNote(!printNote)}
+                />
+              }
+              label="Print note"
             />
           </>
         ),

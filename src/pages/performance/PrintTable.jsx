@@ -21,10 +21,11 @@ import { delta2hms, timeDiff } from "../tracker/utils";
 import CheckIcon from "@material-ui/icons/CheckCircle";
 
 export default function PrintTable({
-  list,
-  printTitle,
-  printBefore,
-  printAfter,
+  list = [],
+  printTitle = "",
+  printBefore = "",
+  printAfter = "",
+  printNote = false,
 }) {
   // console.log(list);
   const [settings] = useSettings();
@@ -75,7 +76,7 @@ export default function PrintTable({
           <TableFooter></TableFooter>
           <TableBody>
             {list.map(({ _id, ...rest }) => (
-              <PrintTableRow key={_id} {...rest} />
+              <PrintTableRow key={_id} printNote={printNote} {...rest} />
             ))}
             <TableRow>
               <Borderless colSpan={3}>
@@ -138,6 +139,7 @@ function PrintTableRow({
   payments,
   price,
   start,
+  printNote = false,
 }) {
   // const [settings] = useSettings();
 
@@ -160,7 +162,7 @@ function PrintTableRow({
       <TableRow>
         <TableCell colSpan={3}>
           <Typography variant="body2" color="textSecondary">
-            {note}
+            {printNote ? note : ""}
           </Typography>
         </TableCell>
         <TableCell colSpan={2}>

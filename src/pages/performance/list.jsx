@@ -154,7 +154,7 @@ function Component() {
 
   const handlePrint = (props) => {
     setPrint(true);
-    console.log(props);
+    // console.log(props);
     setPrintProps(props);
   };
 
