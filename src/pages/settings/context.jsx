@@ -8,6 +8,7 @@ const defaultValue = {
   printTitle: "",
   printBefore: "",
   printAfter: "",
+  printNote: true,
   intro: true,
 };
 

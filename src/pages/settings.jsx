@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 
 import {
   Checkbox,
+  FormControlLabel,
   InputAdornment,
   List,
   ListItem,
@@ -25,6 +26,8 @@ function Component() {
 
   const handleChange = (field, cast = (v) => v) => ({ target: { value } }) =>
     setSettings({ ...settings, [field]: cast(value) });
+  // const handleSet = (field, cast = (v) => v) => (value) =>
+  // setSettings({ ...settings, [field]: cast(value) });
 
   const {
     currency,
@@ -34,6 +37,7 @@ function Component() {
     printTitle,
     printBefore,
     printAfter,
+    printNote,
   } = settings;
 
   return (
@@ -159,6 +163,22 @@ function Component() {
                 multiline
                 rows={2}
                 rowsMax={4}
+              />
+            </ListItem>
+            <ListItem>
+              <ListItemHelp>
+                <Typography variant="body2">
+                  If checked, prints notes in PDF report
+                </Typography>
+              </ListItemHelp>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={printNote}
+                    onChange={handleChange("printNote", () => !printNote)}
+                  />
+                }
+                label="Print note"
               />
             </ListItem>
           </List>

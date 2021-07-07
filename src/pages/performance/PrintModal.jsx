@@ -14,7 +14,7 @@ export default function PrintModal({ onPrint = () => {}, ...rest }) {
   const [printTitle, setPrintTitle] = useState(settings.printTitle);
   const [printBefore, setPrintBefore] = useState(settings.printBefore);
   const [printAfter, setPrintAfter] = useState(settings.printAfter);
-  const [printNote, setPrintNote] = useState(true);
+  const [printNote, setPrintNote] = useState(settings.printNote);
 
   const handleOpen = () => {
     setPrintTitle(settings.printTitle);
