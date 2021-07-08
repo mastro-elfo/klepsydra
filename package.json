@@ -36,7 +36,7 @@
   },
   "scripts": {
     "init": "node scripts/init.js",
-    "prestart": "yarn run init",
+    "prestart": "yarn run init --dev",
     "start": "react-scripts start",
     "prebuild": "yarn run init",
     "build": "react-scripts build",
