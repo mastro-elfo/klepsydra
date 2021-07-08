@@ -50,6 +50,9 @@ export default function PrintModal({ onPrint = () => {}, ...rest }) {
             <TextField
               key="before"
               fullWidth
+              multiline
+              rows={2}
+              rowsMax={4}
               label="Before"
               value={printBefore}
               onChange={({ target: { value } }) => setPrintBefore(value)}
@@ -57,6 +60,9 @@ export default function PrintModal({ onPrint = () => {}, ...rest }) {
             <TextField
               key="after"
               fullWidth
+              multiline
+              rows={2}
+              rowsMax={4}
               label="After"
               value={printAfter}
               onChange={({ target: { value } }) => setPrintAfter(value)}
