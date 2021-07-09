@@ -68,37 +68,43 @@
     }
   },
   "Settings": {
-    "Key": "Impostazioni",
-    "General": "Generale",
-    "Print": "Stampa",
-    "Introduction": "Introduzione",
-    "Price": {
-      "Key": "Tariffa",
-      "Tooltip": "Questa è la tua tariffa base, puoi selezionare tariffe diverse per ogni cliente e per ogni prestazione"
-    },
-    "Rounding": {
-      "Key": "Arrotondamento",
-      "Tooltip": "Applica automaticamente uno sconto per arrotondare al valore più vicino"
-    },
     "Currency": {
       "Key": "Valuta",
       "Tooltip": "Imposta il simbolo della valuta"
     },
-    "PrintTitle": {
-      "Key": "Titolo",
-      "Tooltip": "Titolo della pagina di stampa"
+    "General": "Generale",
+    "Intro": {
+      "Click to watch again": "Clicca per rivedere l'introduzione iniziale",
+      "Watch Again": "Rivedi Introduzione"
+    },
+    "Introduction": "Introduzione",
+    "Key": "Impostazioni",
+
+    "Price": {
+      "Key": "Tariffa",
+      "Tooltip": "Questa è la tua tariffa base, puoi selezionare tariffe diverse per ogni cliente e per ogni prestazione"
+    },
+    "Print": "Stampa",
+
+    "PrintAfter": {
+      "Key": "Dopo",
+      "Tooltip": "Testo dopo la tabella, può contenere più righe"
     },
     "PrintBefore": {
       "Key": "Prima",
       "Tooltip": "Testo prima della tabella, può contenere più righe"
     },
-    "PrintAfter": {
-      "Key": "Dopo",
-      "Tooltip": "Testo dopo la tabella, può contenere più righe"
+    "PrintNote": {
+      "Key": "Stampa note",
+      "Tooltip": "Se attivo stampa le note nel report"
     },
-    "Intro": {
-      "Click to watch again": "Clicca per rivedere l'introduzione iniziale",
-      "Watch Again": "Rivedi Introduzione"
+    "PrintTitle": {
+      "Key": "Titolo",
+      "Tooltip": "Titolo della pagina di stampa"
+    },
+    "Rounding": {
+      "Key": "Arrotondamento",
+      "Tooltip": "Applica automaticamente uno sconto per arrotondare al valore più vicino"
     }
   },
   "Tracker": {

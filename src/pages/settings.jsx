@@ -168,7 +168,7 @@ function Component() {
             <ListItem>
               <ListItemHelp>
                 <Typography variant="body2">
-                  If checked, prints notes in PDF report
+                  {t("Settings.PrintNote.Tooltip")}
                 </Typography>
               </ListItemHelp>
               <FormControlLabel
@@ -178,7 +178,7 @@ function Component() {
                     onChange={handleChange("printNote", () => !printNote)}
                   />
                 }
-                label="Print note"
+                label={t("Settings.PrintNote.Key")}
               />
             </ListItem>
           </List>
