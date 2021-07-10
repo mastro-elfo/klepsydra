@@ -7,9 +7,7 @@ import {
   List,
   ListItem,
   ListSubheader,
-  // ListItemText,
   TextField,
-  Typography,
 } from "@material-ui/core";
 import { BackIconButton, Content, Header, Page } from "mastro-elfo-mui";
 
@@ -51,11 +49,7 @@ function Component() {
             subheader={<ListSubheader>{t("Settings.General")}</ListSubheader>}
           >
             <ListItem>
-              <ListItemHelp>
-                <Typography variant="body2">
-                  {t("Settings.Price.Tooltip")}
-                </Typography>
-              </ListItemHelp>
+              <ListItemHelp title={t("Settings.Price.Tooltip")} />
               <TextField
                 fullWidth
                 label={t("Settings.Price.Key")}
@@ -72,11 +66,7 @@ function Component() {
             </ListItem>
 
             <ListItem>
-              <ListItemHelp>
-                <Typography variant="body2">
-                  {t("Settings.Rounding.Tooltip")}
-                </Typography>
-              </ListItemHelp>
+              <ListItemHelp title={t("Settings.Rounding.Tooltip")} />
               <TextField
                 fullWidth
                 label={t("Settings.Rounding.Key")}
@@ -103,11 +93,7 @@ function Component() {
             </ListItem>
 
             <ListItem>
-              <ListItemHelp>
-                <Typography variant="body2">
-                  {t("Settings.Currency.Tooltip")}
-                </Typography>
-              </ListItemHelp>
+              <ListItemHelp title={t("Settings.Currency.Tooltip")} />
               <TextField
                 fullWidth
                 label={t("Settings.Currency.Key")}
@@ -121,11 +107,7 @@ function Component() {
             subheader={<ListSubheader>{t("Settings.Print")}</ListSubheader>}
           >
             <ListItem>
-              <ListItemHelp>
-                <Typography variant="body2">
-                  {t("Settings.PrintTitle.Tooltip")}
-                </Typography>
-              </ListItemHelp>
+              <ListItemHelp title={t("Settings.PrintTitle.Tooltip")} />
               <TextField
                 fullWidth
                 label={t("Settings.PrintTitle.Key")}
@@ -134,11 +116,7 @@ function Component() {
               />
             </ListItem>
             <ListItem>
-              <ListItemHelp>
-                <Typography variant="body2">
-                  {t("Settings.PrintBefore.Tooltip")}
-                </Typography>
-              </ListItemHelp>
+              <ListItemHelp title={t("Settings.PrintBefore.Tooltip")} />
               <TextField
                 fullWidth
                 label={t("Settings.PrintBefore.Key")}
@@ -150,11 +128,7 @@ function Component() {
               />
             </ListItem>
             <ListItem>
-              <ListItemHelp>
-                <Typography variant="body2">
-                  {t("Settings.PrintAfter.Tooltip")}
-                </Typography>
-              </ListItemHelp>
+              <ListItemHelp title={t("Settings.PrintAfter.Tooltip")} />
               <TextField
                 fullWidth
                 label={t("Settings.PrintAfter.Key")}
@@ -166,11 +140,7 @@ function Component() {
               />
             </ListItem>
             <ListItem>
-              <ListItemHelp>
-                <Typography variant="body2">
-                  {t("Settings.PrintNote.Tooltip")}
-                </Typography>
-              </ListItemHelp>
+              <ListItemHelp title={t("Settings.PrintNote.Tooltip")} />
               <FormControlLabel
                 control={
                   <Checkbox
