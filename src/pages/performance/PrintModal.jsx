@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { Checkbox, FormControlLabel, TextField } from "@material-ui/core";
 import { ConfirmDialogButton } from "mastro-elfo-mui";
-// import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 import { useSettings } from "../settings/context";
 
@@ -10,7 +10,7 @@ import PrintIcon from "@material-ui/icons/Print";
 
 export default function PrintModal({ onPrint = () => {}, ...rest }) {
   const [settings] = useSettings();
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   const [printTitle, setPrintTitle] = useState(settings.printTitle);
   const [printBefore, setPrintBefore] = useState(settings.printBefore);
   const [printAfter, setPrintAfter] = useState(settings.printAfter);
@@ -35,15 +35,15 @@ export default function PrintModal({ onPrint = () => {}, ...rest }) {
     <ConfirmDialogButton
       isIcon
       DialogProps={{
-        title: "Print document",
-        confirm: "Print",
-        cancel: "Cancel",
+        title: t("Performance.PrintModal.Print document"),
+        confirm: t("Print"),
+        cancel: t("Cancel"),
         content: (
           <>
             <TextField
               key="title"
               fullWidth
-              label="Title"
+              label={t("Performance.PrintModal.Title")}
               value={printTitle}
               onChange={({ target: { value } }) => setPrintTitle(value)}
             />
@@ -53,7 +53,7 @@ export default function PrintModal({ onPrint = () => {}, ...rest }) {
               multiline
               rows={2}
               rowsMax={4}
-              label="Before"
+              label={t("Performance.PrintModal.Before")}
               value={printBefore}
               onChange={({ target: { value } }) => setPrintBefore(value)}
             />
@@ -63,7 +63,7 @@ export default function PrintModal({ onPrint = () => {}, ...rest }) {
               multiline
               rows={2}
               rowsMax={4}
-              label="After"
+              label={t("Performance.PrintModal.After")}
               value={printAfter}
               onChange={({ target: { value } }) => setPrintAfter(value)}
             />
@@ -74,7 +74,7 @@ export default function PrintModal({ onPrint = () => {}, ...rest }) {
                   onChange={() => setPrintNote(!printNote)}
                 />
               }
-              label="Print note"
+              label={t("Performance.PrintModal.Note")}
             />
           </>
         ),

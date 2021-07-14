@@ -17,6 +17,7 @@
   "Page Not Found": "Pagina non trovata",
   "Pause": "Pausa",
   "Pause_plural": "Pause",
+  "Print": "Stampa",
   "Save": "Salva",
   "Search": "Cerca",
   "Software Development": "Sviluppo Software",
@@ -56,6 +57,13 @@
     "NotPayed": "Non pagato",
     "NoPerformance": "Non ci sono $t(Performance.key_plural) da mostrare, inizia a tracciare per usare questa sezione",
     "Price": "Price",
+    "PrintModal": {
+      "After": "Testo dopo",
+      "Before": "Testo prima",
+      "Note": "Stampa note",
+      "Print document": "Stampa documento",
+      "Title": "Titolo"
+    },
     "Search": "Cerca $t(Performance.key_plural)",
     "StartDate": "Data di inizio",
     "StartHour": "Ora di inizio",
