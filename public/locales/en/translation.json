@@ -17,6 +17,7 @@
   "Page Not Found": "Page Not Found",
   "Pause": "Pause",
   "Pause_plural": "Pauses",
+  "Print": "Print",
   "Save": "Save",
   "Search": "Search",
   "Software Development": "Software Development",
@@ -57,6 +58,13 @@
     "NoPerformance": "No $t(Performance.key) to show, start tracking to use this section",
     "NotPayed": "Not payed",
     "Price": "Price",
+    "PrintModal": {
+      "After": "After",
+      "Before": "Before",
+      "Note": "Print note",
+      "Print document": "Print document",
+      "Title": "Title"
+    },
     "Search": "Search $t(Performance.key_plural)",
     "StartDate": "Start date",
     "StartHour": "Start hour",
