@@ -92,7 +92,6 @@
       "Tooltip": "Questa è la tua tariffa base, puoi selezionare tariffe diverse per ogni cliente e per ogni prestazione"
     },
     "Print": "Stampa",
-
     "PrintAfter": {
       "Key": "Dopo",
       "Tooltip": "Testo dopo la tabella, può contenere più righe"
