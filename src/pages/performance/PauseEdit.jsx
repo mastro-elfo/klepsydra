@@ -118,9 +118,7 @@ export default function PauseEdit({ pause: _pause, onChange, onDelete }) {
           </List>
         </DialogContent>
         <DialogActions>
-          <DangerButton onClick={handleDelete}>
-            {t("Performance.Delete")}
-          </DangerButton>
+          <DangerButton onClick={handleDelete}>{t("Delete")}</DangerButton>
         </DialogActions>
       </Dialog>
     </Fragment>
