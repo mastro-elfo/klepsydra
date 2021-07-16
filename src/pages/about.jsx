@@ -23,9 +23,9 @@ import { useTitle } from "./utils";
 import { version } from "../version.json";
 
 function Component() {
-  useTitle("Informazioni");
   const [licenseDialog, setLicenseDialog] = useState(false);
   const { t } = useTranslation();
+  useTitle(t("About.Key"));
 
   return (
     <Page
