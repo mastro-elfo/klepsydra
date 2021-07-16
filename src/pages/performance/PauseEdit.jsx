@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import {
   Dialog,
@@ -24,6 +25,7 @@ import EditIcon from "@material-ui/icons/Edit";
 export default function PauseEdit({ pause: _pause, onChange, onDelete }) {
   const [open, setOpen] = useState(false);
   const [pause, setPause] = useState(_pause);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const to = setTimeout(onChange, 250, pause);
@@ -87,7 +89,7 @@ export default function PauseEdit({ pause: _pause, onChange, onDelete }) {
             <ListItem>
               <KeyboardDatePicker
                 fullWidth
-                label="Data di inizio"
+                label={t("Performance.StartDate")}
                 value={start}
                 onChange={handleChangeStart}
                 format="dd/MM/yyyy"
@@ -97,7 +99,7 @@ export default function PauseEdit({ pause: _pause, onChange, onDelete }) {
               <KeyboardTimePicker
                 fullWidth
                 ampm={false}
-                label="Ora di inizio"
+                label={t("Performance.StartHour")}
                 value={start}
                 onChange={handleChangeStart}
                 views={["hours", "minutes", "seconds"]}
@@ -108,7 +110,7 @@ export default function PauseEdit({ pause: _pause, onChange, onDelete }) {
             <ListItem>
               <DurationField
                 fullWidth
-                label="Durata"
+                label={t("Performance.Length")}
                 value={length}
                 onChange={handleChangeLength}
               />
@@ -116,7 +118,9 @@ export default function PauseEdit({ pause: _pause, onChange, onDelete }) {
           </List>
         </DialogContent>
         <DialogActions>
-          <DangerButton onClick={handleDelete}>Elimina</DangerButton>
+          <DangerButton onClick={handleDelete}>
+            {t("Performance.Delete")}
+          </DangerButton>
         </DialogActions>
       </Dialog>
     </Fragment>
