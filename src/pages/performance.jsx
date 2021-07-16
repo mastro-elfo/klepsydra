@@ -1,5 +1,5 @@
 import { Switch, Redirect, Route } from "react-router-dom";
-import DrawerIcon from "@material-ui/icons/School";
+import { useTranslation } from "react-i18next";
 
 import { route as Edit } from "./performance/edit";
 import { route as List } from "./performance/list";
@@ -7,8 +7,11 @@ import { route as View } from "./performance/view";
 
 import { useTitle } from "./utils";
 
+import DrawerIcon from "@material-ui/icons/School";
+
 function Component() {
-  useTitle("Prestazioni");
+  const { t } = useTranslation();
+  useTitle(t("Performance.Key_plural"));
 
   return (
     <Switch>

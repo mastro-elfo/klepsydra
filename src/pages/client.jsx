@@ -1,4 +1,5 @@
 import { Switch, Redirect, Route } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import { route as Create } from "./client/create";
 import { route as Edit } from "./client/edit";
@@ -10,7 +11,9 @@ import { useTitle } from "./utils";
 import DrawerIcon from "@material-ui/icons/Person";
 
 function Component() {
-  useTitle("Clienti");
+  const { t } = useTranslation();
+  useTitle(t("Client.Key_plural"));
+
   return (
     <Switch>
       <Route {...Create} />

@@ -18,9 +18,9 @@ import ListItemHelp from "./settings/ListItemHelp";
 import { useSettings } from "./settings/context";
 
 function Component() {
-  useTitle("Impostazioni");
   const [settings, setSettings] = useSettings();
   const { t } = useTranslation();
+  useTitle(t("Settings.Key"));
 
   const handleChange = (field, cast = (v) => v) => ({ target: { value } }) =>
     setSettings({ ...settings, [field]: cast(value) });
