@@ -17,9 +17,10 @@ import {
   BackIconButton,
   Content,
   Header,
-  HeaderSearchField,
+  // HeaderSearchField,
   Page,
   Push,
+  SearchField,
 } from "mastro-elfo-mui";
 
 import { KeyboardDatePicker } from "@material-ui/pickers";
@@ -174,13 +175,13 @@ function Component() {
         <Header
           leftAction={[
             <BackIconButton key="back" />,
-            <HeaderSearchField
-              key="search"
-              fullWidth
-              placeholder={t("Performance.Search")}
-              onSearch={handleSearch}
-              onClear={handleClear}
-            />,
+            // <HeaderSearchField
+            //   key="search"
+            //   fullWidth
+            //   placeholder={t("Performance.Search")}
+            //   onSearch={handleSearch}
+            //   onClear={handleClear}
+            // />,
           ]}
           rightAction={[
             <Push key="create" replace href="/tracker">
@@ -227,7 +228,15 @@ function Component() {
           <Paper>
             <Box padding={2}>
               <Grid container justify="space-around">
-                <Grid item xs={12} sm="auto">
+                <Grid item xs={12}>
+                  <SearchField
+                    fullWidth
+                    placeholder={t("Performance.Search")}
+                    onSearch={handleSearch}
+                    onClear={handleClear}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6} md={4}>
                   <KeyboardDatePicker
                     fullWidth
                     clearable
@@ -238,7 +247,7 @@ function Component() {
                     format="dd/MM/yyyy"
                   />
                 </Grid>
-                <Grid item xs={12} sm="auto">
+                <Grid item xs={12} sm={6} md={4}>
                   <KeyboardDatePicker
                     fullWidth
                     clearable
@@ -249,7 +258,7 @@ function Component() {
                     format="dd/MM/yyyy"
                   />
                 </Grid>
-                <Grid item xs={12} sm="auto">
+                <Grid item xs={12} sm={12} md={4}>
                   <ListItem button onClick={() => setNotPayed(!notPayed)}>
                     <ListItemIcon>
                       {notPayed ? (
