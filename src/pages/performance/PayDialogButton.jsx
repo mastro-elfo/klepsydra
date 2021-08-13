@@ -3,14 +3,14 @@ import { useSnackbar } from "notistack";
 import {
   // Box,
   // Checkbox,
-  // Grid,
+  Grid,
   IconButton,
   // InputAdornment,
   // List,
   ListItem,
   // ListItemIcon,
   ListItemText,
-  // Typography,
+  Typography,
   // TextField,
 } from "@material-ui/core";
 
@@ -78,28 +78,52 @@ export default function PayDialogButton({ selected, onUpdate }) {
         confirm: "Conferma",
         cancel: "Annulla",
         content: [
-          <ListItem key="first">
-            <ListItemText
-              primary={`${total.toFixed(2)}${settings.currency}`}
-              secondary="Totale"
-            />
-          </ListItem>,
           ...selected.map((item) => {
             const { due } = derived(item);
             return (
               <ListItem key={item._id}>
                 <ListItemText
-                  primary={`${item.client.name} ${item.client.surname}`}
-                  secondary={`${new Date(item.start).toLocaleString()} ${
-                    item.note
-                  }`}
-                />
-                <ListItemText
-                  primary={`${due.toFixed(2)}${settings.currency}`}
+                  primary={
+                    <Grid container>
+                      <Grid item xs={12} md={5}>
+                        <Typography variant="h6">
+                          {item.client.name} {item.client.surname}
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={10} md={5}>
+                        <ListItemText
+                          primary={new Date(item.start).toLocaleString()}
+                          secondary="Date"
+                        />
+                      </Grid>
+                      <Grid item xs={2}>
+                        <Typography variant="h6">{`${due.toFixed(2)}${
+                          settings.currency
+                        }`}</Typography>
+                      </Grid>
+                    </Grid>
+                  }
+                  secondary={item.note}
                 />
               </ListItem>
             );
           }),
+          <ListItem key="last">
+            <ListItemText
+              primary={
+                <Grid container>
+                  <Grid item xs={10}>
+                    <Typography variant="h6">Total</Typography>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <Typography variant="h6">
+                      {`${total.toFixed(2)}${settings.currency}`}
+                    </Typography>
+                  </Grid>
+                </Grid>
+              }
+            />
+          </ListItem>,
         ],
       }}
     >
