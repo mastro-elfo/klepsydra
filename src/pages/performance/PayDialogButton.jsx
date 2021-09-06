@@ -34,7 +34,7 @@ export default function PayDialogButton({ selected, onUpdate }) {
   const { enqueueSnackbar } = useSnackbar();
   const [settings] = useSettings();
   const [open, setOpen] = useState(false);
-  u;
+
   const total = useMemo(
     () =>
       selected.map((item) => derived(item)).reduce((a, { due }) => a + due, 0),
