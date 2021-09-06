@@ -56,6 +56,7 @@
     "Notes": "Note",
     "NotPayed": "Non pagato",
     "NoPerformance": "Non ci sono $t(Performance.key_plural) da mostrare, inizia a tracciare per usare questa sezione",
+    "PaymentDone": "Pagamenti effettuati",
     "Price": "Price",
     "PrintModal": {
       "After": "Testo dopo",
