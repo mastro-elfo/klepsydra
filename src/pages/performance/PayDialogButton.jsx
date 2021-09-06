@@ -1,5 +1,7 @@
 import { useMemo, useState } from "react";
 import { useSnackbar } from "notistack";
+import { useTranslation } from "react-i18next";
+
 import {
   // Box,
   // Checkbox,
@@ -28,10 +30,11 @@ import { fromObject as paymentFromObject } from "../../controllers/payment";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
 
 export default function PayDialogButton({ selected, onUpdate }) {
+  const { t } = useTranslation();
   const { enqueueSnackbar } = useSnackbar();
   const [settings] = useSettings();
   const [open, setOpen] = useState(false);
-
+  u;
   const total = useMemo(
     () =>
       selected.map((item) => derived(item)).reduce((a, { due }) => a + due, 0),
@@ -56,7 +59,7 @@ export default function PayDialogButton({ selected, onUpdate }) {
         .map((item) => update(item._id, item))
     )
       .then(() => {
-        enqueueSnackbar("Pagamenti effettuati", { variant: "success" });
+        enqueueSnackbar(t("Performance.PaymentDone"), { variant: "success" });
         onUpdate();
       })
       .catch((e) => {

@@ -57,6 +57,7 @@
     "NotPayed": "Not payed",
     "NoPerformance": "No $t(Performance.key) to show, start tracking to use this section",
     "NotPayed": "Not payed",
+    "PaymentDone": "Payments done",
     "Price": "Price",
     "PrintModal": {
       "After": "After",
